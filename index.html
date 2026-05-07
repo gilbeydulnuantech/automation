@@ -6,14 +6,13 @@
     <title>Gilbert Dulnuan | AI Automation Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
         :root {
-            --accent-gray: #94a3b8; /* Slate Gray */
+            --accent-gray: #94a3b8;
             --obsidian: #0a0a0a;
             --charcoal: #171717;
-            --light-gray: #e2e8f0;
         }
 
         body { 
@@ -21,90 +20,57 @@
             scroll-behavior: smooth; 
             background-color: var(--obsidian);
             color: #f8fafc;
+            overflow-x: hidden;
         }
-        
+
         .text-accent { color: var(--accent-gray); }
         .bg-accent { background-color: var(--accent-gray); }
-        .border-accent { border-color: var(--accent-gray); }
-        
         .bg-charcoal { background-color: var(--charcoal); }
 
         .sticky-nav {
             backdrop-filter: blur(12px);
             background-color: rgba(10, 10, 10, 0);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0);
+        }
+
+        .hero-background-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('bg/bg1.jpg'); 
+            background-size: cover; background-position: center;
+            
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.95) 100%);
+            z-index: 2;
         }
 
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            display: none; position: fixed; z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.95);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            align-items: center; justify-content: center; padding: 20px;
         }
-
         .modal.active { display: flex; }
-
-        .modal-content-wrapper {
-            background: var(--charcoal);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 20px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-modal-content {
-            width: 90%;
-            max-width: 600px;
-            height: 80vh;
-            background: var(--obsidian);
-            border: 1px solid var(--accent-gray);
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .profile-frame {
-            width: 100%;
-            max-width: 320px;
-            aspect-ratio: 1/1;
-          
-        }
 
         .accent-btn {
             background-color: var(--accent-gray);
             color: #0f172a;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .accent-btn:hover {
-            background-color: #cbd5e1;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background-color: #cbd5e1;
         }
-
-        .nav-link:hover { color: var(--accent-gray); }
 
         .cert-thumb {
-            width: 80px;
-            height: 60px;
-            object-fit: cover;
-            border: 1px solid #334155;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
+            width: 80px; height: 60px; object-fit: cover;
+            border: 1px solid #334155; border-radius: 4px; cursor: pointer;
         }
 
-        .cert-thumb:hover { border-color: var(--accent-gray); }
-
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--obsidian); }
         ::-webkit-scrollbar-thumb { background: var(--accent-gray); border-radius: 10px; }
     </style>
@@ -113,134 +79,66 @@
 
     <!-- NAVIGATION BAR -->
     <nav class="sticky-nav fixed top-0 w-full z-50">
-        <div class="container mx-auto px-8 md:px-20 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold tracking-tighter text-accent">GD-Automations</a>
-            <div class="hidden md:flex space-x-8 font-medium text-gray-400">
-                <a href="#home" class="nav-link transition">Home</a>
-                <a href="#about" class="nav-link transition">About</a>
-                <a href="#skills" class="nav-link transition">Services</a>
-                <a href="#works" class="nav-link transition">Portfolio</a>
-                <a href="#testimonials" class="nav-link transition">Testimonials</a>
+        <div class="container mx-auto px-6 md:px-20 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl md:text-2xl font-bold tracking-tighter text-accent uppercase">GD-Automations</a>
+            <div class="hidden lg:flex space-x-8 text-xs font-semibold tracking-widest uppercase text-gray-400">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#skills" class="hover:text-white transition">Services</a>
+                <a href="#works" class="hover:text-white transition">Portfolio</a>
+                <a href="#testimonials" class="hover:text-white transition">Testimonials</a>
+                <a href="#booking" class="hover:text-white transition">Book Me</a>
             </div>
-            <button onclick="toggleForm()" class="accent-btn px-6 py-2 rounded-full font-semibold shadow-lg">
+            <button onclick="toggleContactForm()" class="accent-btn px-5 py-2 md:px-6 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest">
                 Contact Me
             </button>
         </div>
     </nav>
 
-  <style>
-    /* HERO SECTION BACKGROUND STYLING */
-    #home {
-        position: relative;
-        background-color: #000; /* Fallback */
-        overflow: hidden;
-    }
-
-    .hero-background-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* Replace 'workflow-bg.png' with the actual filename of your uploaded photo */
-        background-image: url('bg/bg1.jpg'); 
-        background-size: cover;
-        background-position: center;
-        /* Make it Black and White and darken it significantly for text readability */
-        filter: grayscale(100%) brightness(100%);
-        z-index: 1;
-    }
-
-    /* Gradient overlay to make the center text pop and fade the edges */
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-        z-index: 2;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 3;
-    }
-
-    /* Keep the shards from the "Ink Masters" style for depth */
-    .shard {
-        position: absolute;
-        background: linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0));
-        z-index: 2;
-        pointer-events: none;
-    }
-    .shard-1 { width: 60%; height: 120%; top: -10%; left: -10%; transform: rotate(-15deg); }
-   
-</style>
-
-<!-- HERO SECTION -->
-<section id="home" class="min-h-screen flex items-center pt-28 pb-20">
-    <!-- Image Layer -->
-    <div class="hero-background-image"></div>
-    <!-- Dark Overlay Layer -->
-    <div class="hero-overlay"></div>
-    <!-- Decorative Shard -->
-    <div class="shard shard-1"></div>
-
-    <div class="container mx-auto px-8 md:px-20 text-center hero-content">
-        <h1 class="text- text-6xl tracking-tighter  font-bold text-4xl uppercase">
-            Automate the flow, <br><span class="text-accent">watch your business grow.</span>
-        </h1>
-        
-        <p class=" text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-            By integrating custom AI workflows into your business, we eliminate operational friction so your company can reach its full potential at record speed.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <button onclick="toggleForm()" class="accent-btn px-12 py-5 rounded-xl text-xl font-bold shadow-xl">
-                Get Started Now
-            </button>
-            <a href="#works" class="bg-transparent border border-gray-600 text-white px-12 py-5 rounded-xl text-xl font-bold hover:border-accent hover:text-accent transition text-center">
-                View Portfolio
-            </a>
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+        <div class="hero-background-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="container mx-auto px-6 md:px-20 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl tracking-tighter font-bold uppercase leading-[1.1] mb-6">
+                Automate the flow, <br><span class="text-accent">watch your business grow.</span>
+            </h1>
+            <p class="text-sm md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light tracking-wide">
+                By integrating custom AI workflows into your business, we eliminate operational friction so your company can reach its full potential at record speed.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="toggleBookingForm()" class="accent-btn px-10 py-4 md:px-12 md:py-5 rounded-xl text-sm md:text-lg font-bold uppercase tracking-widest shadow-xl">
+                    Book Me
+                </button>
+                <a href="#works" class="border border-white/20 hover:border-accent text-white px-10 py-4 md:px-12 md:py-5 rounded-xl text-sm md:text-lg font-bold uppercase tracking-widest transition text-center">
+                    View Portfolio
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-32 bg-charcoal border-y border-gray-800">
-        <div class="container mx-auto px-8 md:px-20 flex flex-col md:flex-row items-center gap-16">
+    <section id="about" class="py-24 bg-charcoal border-y border-white/5">
+        <div class="container mx-auto px-6 md:px-20 flex flex-col md:flex-row items-center gap-16">
             <div class="md:w-3/5 text-left">
-                <h2 class="text-4xl font-bold text-accent mb-8">About Me</h2>
-                <p class="text-xl text-gray-300 leading-relaxed font-light mb-10">
-                    I am <strong>Gilbert Dulnuan</strong>, an AI automation specialist. I focus on building bridges between complex business processes and intelligent technology. The goal is to reclaim time, reduce human error, and allow teams to focus on high-level strategy rather than repetitive data entry.
+                <h2 class="text-3xl md:text-4xl font-bold text-accent mb-6">About Me</h2>
+                <p class="text-base md:text-xl text-gray-300 leading-relaxed font-light mb-8">
+                    I am <strong>Gilbert Dulnuan</strong>, an AI automation specialist. I build bridges between complex business processes and intelligent technology.
                 </p>
-                <div class="flex flex-wrap gap-12 mb-12">
-                    <div class="flex flex-col">
-                        <span class="text-accent font-bold text-4xl">3+</span>
-                        <span class="text-gray-500 text-xs tracking-widest uppercase mt-2">Years Exp.</span>
-                    </div>
-                    <div class="w-px h-16 bg-gray-700 hidden sm:block"></div>
-                    <div class="flex flex-col">
-                        <span class="text-accent font-bold text-4xl">100+</span>
-                        <span class="text-gray-500 text-xs tracking-widest uppercase mt-2">Automations</span>
-                    </div>
+                <div class="flex gap-12 mb-10">
+                    <div class="flex flex-col"><span class="text-white font-bold text-3xl">3+</span><span class="text-gray-500 text-[10px] tracking-widest uppercase">Years Exp.</span></div>
+                    <div class="flex flex-col"><span class="text-white font-bold text-3xl">100+</span><span class="text-gray-500 text-[10px] tracking-widest uppercase">Automations</span></div>
                 </div>
-                <div>
-                    <p class="text-[10px] tracking-[0.2em] uppercase text-gray-500 mb-4 font-bold">Professional Certifications</p>
-                    <div class="flex flex-row flex-wrap gap-4">
-                        <img src="certificates/cert1.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert1.png', 'HighLevel CRM Specialist', 'Verified proficiency in managing full CRM pipelines.')">
-                        <img src="certificates/cert2.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert2.png', 'Make.com Specialist', 'Certification for building complex scenarios and API integrations.')">
-                        <img src="certificates/cert3.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert3.png', 'Zapier Certified Expert', 'Mastery in building multi-step zaps and custom logic.')">
-                        <img src="certificates/cert4.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert4.png', 'n8n Specialist', 'Certification for node-based automation.')">
-                    </div>
+                <div class="flex flex-row flex-wrap gap-4">
+                    <img src="certificates/cert1.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert1.png', 'GHL Specialist', 'Full mastery.')">
+                    <img src="certificates/cert2.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert2.png', 'Make.com', 'Advanced scenario engineering.')">
+                    <img src="certificates/cert3.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert3.png', 'Zapier', 'Certified Expert.')">
+                    <img src="certificates/cert4.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert4.png', 'n8n', 'Node automation.')">
+                    <img src="certificates/cert5.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert5.png', 'AI Prompting', 'Advanced Prompt Engineering.')">
                 </div>
             </div>
-            <div class="md:w-2/5 flex flex-col items-center md:items-end">
-                <div class="profile-frame rounded-full overflow-hidden bg-obsidian mb-8">
-                    <img src="heropose.JPG" alt="Gilbert" class="w-full h-full object-cover">
-                </div>
-                
+            <div class="md:w-2/5 flex justify-center md:justify-end">
+                <img src="heropose.JPG" alt="Gilbert" class="w-full max-w-[320px] rounded-full aspect-square object-cover border-2 border-accent">
             </div>
         </div>
     </section>
@@ -248,371 +146,247 @@
     <!-- SERVICES SECTION -->
     <section id="skills" class="py-24 bg-obsidian">
         <div class="container mx-auto px-8 md:px-20">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-widest uppercase">Specialized Services</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mt-4"></div>
-            </div>
-            
+            <h2 class="text-3xl font-bold text-white tracking-widest uppercase text-center mb-16">Specialized Services</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- 1. Operations & Workflow Automation -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition duration-500 group flex flex-col h-full shadow-lg">
-                    <i class="fas fa-cogs text-accent text-3xl mb-6 block"></i>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition flex flex-col shadow-lg">
+                    <i class="fas fa-cogs text-accent text-3xl mb-6"></i>
                     <h3 class="text-xl font-bold mb-3 text-white">Operations & Workflow Automation</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        I design systems that allow different software platforms to talk to each other without human intervention.
-                    </p>
-                    <ul class="text-gray-500 text-xs space-y-3 mt-auto">
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Custom Zapier/Make.com Integrations</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Automated Lead Management</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Database Synchronization</li>
+                    <p class="text-gray-400 text-sm mb-6 font-light">Design and implement systems that connect disparate software tools using AI to handle complex tasks without human intervention. By using LLMs and integration platforms, they can automate entire processes like lead qualification, document routing, and data entry. This reduces manual labor and minimizes the risk of human error in repetitive administrative cycles.</p>
+                    <ul class="text-gray-500 text-xs space-y-2 mt-auto">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Custom Zapier/Make.com Integrations</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Automated Lead Management</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Database Synchronization</li>
                     </ul>
                 </div>
-
-                <!-- 2. Intelligent Content & Marketing Systems -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition duration-500 group flex flex-col h-full shadow-lg">
-                    <i class="fas fa-bullhorn text-accent text-3xl mb-6 block"></i>
-                    <h3 class="text-xl font-bold mb-3 text-white">Intelligent Content & Marketing</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        Leveraging Generative AI to scale marketing efforts while maintaining a consistent brand voice.
-                    </p>
-                    <ul class="text-gray-500 text-xs space-y-3 mt-auto">
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> AI-Powered Content Pipelines</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Dynamic Ad Creation</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Automated Reporting Dashboards</li>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition flex flex-col shadow-lg">
+                    <i class="fas fa-bullhorn text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 text-white">Automated Content Generation Pipelines</h3>
+                    <p class="text-gray-400 text-sm mb-6 font-light">We create frameworks that allow businesses to produce high volumes of marketing copy, social media posts, or technical reports automatically. By setting up structured prompts and multi-stage review systems, they help teams scale their output while keeping the tone and quality controlled. This service is particularly effective for SEO optimization and maintaining a steady presence on multiple social channels.</p>
+                    <ul class="text-gray-500 text-xs space-y-2 mt-auto">
+                        <li><i class="fas fa-check text-accent mr-2"></i> AI-Powered Content Pipelines</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Dynamic Ad Creation</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Automated Performance Reporting</li>
                     </ul>
                 </div>
-
-                <!-- 3. Customer Experience & Support (AI Agents) -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition duration-500 group flex flex-col h-full shadow-lg">
-                    <i class="fas fa-robot text-accent text-3xl mb-6 block"></i>
-                    <h3 class="text-xl font-bold mb-3 text-white">Customer Experience & Support</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        AI Agents that can actually perform tasks, resolve issues, and vet potential clients.
-                    </p>
-                    <ul class="text-gray-500 text-xs space-y-3 mt-auto">
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Custom Knowledge Base Bots</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Tier 1 Support Automation</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Lead Qualification Conversationalists</li>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition flex flex-col shadow-lg">
+                    <i class="fas fa-robot text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 text-white">Custom AI Chatbot Development</h3>
+                    <p class="text-gray-400 text-sm mb-6 font-light">This service involves building sophisticated, RAG-based (Retrieval-Augmented Generation) assistants that interact with customers or employees using a company’s specific data. These bots go beyond simple scripts to provide nuanced answers, schedule appointments, and resolve support tickets in real-time. They ensure 24/7 engagement while maintaining a consistent brand voice across all digital platforms.</p>
+                    <ul class="text-gray-500 text-xs space-y-2 mt-auto">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Custom Knowledge Base Bots</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Tier 1 Support Automation</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Lead Qualification Agents</li>
                     </ul>
                 </div>
-
-                <!-- 4. Administrative & Executive Assistance -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition duration-500 group flex flex-col h-full shadow-lg">
-                    <i class="fas fa-user-tie text-accent text-3xl mb-6 block"></i>
-                    <h3 class="text-xl font-bold mb-3 text-white">Administrative & Executive Assistance</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        Automating the "busy work" that eats up the hours of founders and executives.
-                    </p>
-                    <ul class="text-gray-500 text-xs space-y-3 mt-auto">
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Automated Meeting Summary Lifecycles</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Email Management & Sorting</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Expense & Invoice Processing</li>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition flex flex-col shadow-lg">
+                    <i class="fas fa-user-tie text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 text-white">Executive Assistance</h3>
+                    <p class="text-gray-400 text-sm mb-6 font-light">We build systems that craft individualized outreach messages at scale by analyzing recipient profiles and past interactions. These tools ensure that every email feels bespoke rather than mass-produced, significantly increasing open and conversion rates. The automation handles the entire lifecycle, from the initial "cold" touchpoint to intelligent follow-ups based on the lead's specific behavior.</p>
+                    <ul class="text-gray-500 text-xs space-y-2 mt-auto">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Automated Meeting Summaries</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Smart Email Categorization</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Expense & Invoice Processing</li>
                     </ul>
                 </div>
-
-                <!-- 5. Technical Maintenance & Asset Optimization -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition duration-500 group flex flex-col h-full shadow-lg">
-                    <i class="fas fa-tools text-accent text-3xl mb-6 block"></i>
-                    <h3 class="text-xl font-bold mb-3 text-white">Technical Maintenance & Asset Optimization</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        Systems to keep hardware and massive digital libraries running smoothly and organized.
-                    </p>
-                    <ul class="text-gray-500 text-xs space-y-3 mt-auto">
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Digital Asset Management (DAM) Automation</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Equipment Lifecycle Tracking</li>
-                        <li class="flex items-start"><i class="fas fa-check text-accent mt-1 mr-2"></i> Automated Maintenance Alerts</li>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 hover:border-accent transition flex flex-col shadow-lg">
+                    <i class="fas fa-tools text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-3 text-white">AI-Enhanced Data Analysis and Reporting</h3>
+                    <p class="text-gray-400 text-sm mb-6 font-light">This focuses on deploying agents that can parse massive datasets to identify trends, predict future outcomes, and generate summarized visual reports. Instead of manual spreadsheet work, these systems provide actionable insights and "what-if" scenarios to help leadership make data-driven decisions. It transforms raw information into a strategic asset by highlighting opportunities that might otherwise go unnoticed.</p>
+                    <ul class="text-gray-500 text-xs space-y-2 mt-auto">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Digital Asset Management</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Equipment Lifecycle Tracking</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Automated Maintenance Alerts</li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-   <!-- PORTFOLIO SECTION (STAGE & CAROUSEL) -->
-<section id="works" class="py-24 bg-charcoal">
-    <div class="container mx-auto px-8 md:px-20 relative">
-        <h2 class="text-3xl font-bold text-accent text-center mb-16 uppercase tracking-widest">Portfolio</h2>
-
-        <!-- 1. MAIN DISPLAY STAGE (Arrows moved here) -->
-        <div class="relative group mb-12">
-            
-            <!-- Left Arrow -->
-            <button onclick="changeProject(-1)" class="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-obsidian/80 border border-white/10 text-white hover:text-accent hover:border-accent transition flex items-center justify-center">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-            <!-- Right Arrow -->
-            <button onclick="changeProject(1)" class="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-obsidian/80 border border-white/10 text-white hover:text-accent hover:border-accent transition flex items-center justify-center">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <!-- Stage Container -->
-            <div id="main-stage" class="bg-obsidian p-6 md:p-10 rounded-3xl border border-white/5 shadow-2xl transition-opacity duration-300">
-                <div class="flex flex-col lg:flex-row gap-10 items-center">
-                    <!-- Image -->
-                    <div class="w-full lg:w-3/5 overflow-hidden rounded-2xl border border-gray-800">
-                        <img id="stage-img" src="projects/project1.png" alt="Project Display" class="w-full h-auto object-cover">
-                    </div>
-                    <!-- Text Content -->
-                    <div class="w-full lg:w-2/5 space-y-6">
-                        <div class="inline-block px-3 py-1 border border-accent/30 rounded-full">
-                            <span class="text-[10px] text-accent uppercase tracking-widest font-bold">Featured Work</span>
-                        </div>
-                        <h3 id="stage-title" class="text-3xl md:text-4xl font-bold text-white">Real Estate AI Agent</h3>
-                        <p id="stage-desc" class="text-gray-400 leading-relaxed font-light">
-                            Problem: Manual lead follow-up was slow and resulted in lost prospects. <br><br> 
-                            Solution: I built a Telegram-based AI agent that uses a custom knowledge base to provide instant property details 24/7.
-                        </p>
-                        <div class="pt-4">
-                             <button onclick="toggleForm()" class="accent-btn px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-widest">
-                                Inquire Project
-                            </button>
+    <!-- PORTFOLIO SECTION -->
+    <section id="works" class="py-24 bg-charcoal">
+        <div class="container mx-auto px-8 md:px-20 relative">
+            <h2 class="text-3xl font-bold text-accent text-center mb-16 uppercase tracking-widest">Portfolio</h2>
+            <div class="relative mb-12">
+                <button onclick="changeProject(-1)" class="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-obsidian/80 border border-white/10 text-white hover:text-accent flex items-center justify-center transition"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="changeProject(1)" class="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-obsidian/80 border border-white/10 text-white hover:text-accent flex items-center justify-center transition"><i class="fas fa-chevron-right"></i></button>
+                <div id="main-stage" class="bg-obsidian p-6 md:p-10 rounded-3xl border border-white/5 transition-opacity duration-300">
+                    <div class="flex flex-col lg:flex-row gap-10 items-center">
+                        <div class="w-full lg:w-3/5 overflow-hidden rounded-2xl border border-gray-800"><img id="stage-img" src="projects/project1.png" class="w-full h-auto object-cover"></div>
+                        <div class="w-full lg:w-2/5 space-y-6 text-center lg:text-left">
+                            <h3 id="stage-title" class="text-2xl md:text-3xl font-bold text-white">Project Title</h3>
+                            <p id="stage-desc" class="text-gray-400 font-light"></p>
+                            <!-- Updated: Now triggers Booking Modal -->
+                            <button onclick="toggleBookingForm()" class="accent-btn px-8 py-3 rounded-lg text-xs font-bold uppercase tracking-widest">Inquire Project</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="thumb-viewport" class="overflow-hidden"><div id="thumb-slider" class="flex gap-4 py-4 transition-transform duration-500"></div></div>
         </div>
-
-        <!-- 2. THUMBNAIL STRIP (Indicator) -->
-        <div id="thumb-viewport" class="overflow-hidden">
-            <div id="thumb-slider" class="flex gap-4 py-4 transition-transform duration-500 ease-in-out">
-                <!-- Thumbnails generated by JS -->
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- TESTIMONIALS SECTION -->
     <section id="testimonials" class="py-24 bg-obsidian">
         <div class="container mx-auto px-8 md:px-20">
-            <h2 class="text-3xl font-bold text-accent text-center mb-16 uppercase tracking-widest">Client Testimonials</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="text-3xl font-bold text-accent text-center mb-16 uppercase tracking-widest">Testimonials</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 relative shadow-lg">
-                    <i class="fas fa-quote-left text-accent text-2xl mb-4 opacity-50"></i>
-                    <p class="text-gray-300 italic mb-6 leading-relaxed">
-                        "The 24/7 AI agent Gilbert built changed everything for our agency. We no longer miss late-night property inquiries, and our lead conversion has increased by nearly 40%."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-gray-700 rounded-full mr-3 flex items-center justify-center font-bold text-accent">SJ</div>
-                        <div>
-                            <p class="text-white font-bold text-sm">Sarah Jenkins</p>
-                            <p class="text-gray-500 text-xs">Real Estate Broker</p>
-                        </div>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 flex flex-col h-full shadow-xl">
+                    <div class="flex text-yellow-500 mb-4 text-xs">
+                        <i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star"></i>
                     </div>
+                    <p class="text-gray-300 italic mb-6 font-light leading-relaxed">
+                        "Gilbert’s AI agent transformed our lead management process by providing instant responses to every inquiry. We no longer lose potential clients to slow follow-ups, even during the late hours of the night. His technical expertise in building custom knowledge bases is truly unmatched in the automation space."
+                    </p>
+                    <p class="text-white font-bold text-xs uppercase tracking-widest mt-auto">Sarah Jenkins — Real Estate Broker</p>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 relative shadow-lg">
-                    <i class="fas fa-quote-left text-accent text-2xl mb-4 opacity-50"></i>
-                    <p class="text-gray-300 italic mb-6 leading-relaxed">
-                        "Gilbert's Make.com integration saved my team over 15 hours a week. Having Asana, Xero, and Sheets perfectly synced means zero data entry errors for our finance department."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-gray-700 rounded-full mr-3 flex items-center justify-center font-bold text-accent">MD</div>
-                        <div>
-                            <p class="text-white font-bold text-sm">Mark Donovan</p>
-                            <p class="text-gray-500 text-xs">Operations Manager</p>
-                        </div>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 flex flex-col h-full shadow-xl">
+                    <div class="flex text-yellow-500 mb-4 text-xs">
+                        <i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star"></i>
                     </div>
+                    <p class="text-gray-300 italic mb-6 font-light leading-relaxed">
+                        "Our team was struggling with manual data entry until Gilbert engineered a seamless Make.com sync across three platforms. Now, our Asana, Xero, and Google Sheets work in perfect harmony without any human intervention required. This integration has saved us countless hours and eliminated all previous data entry errors."
+                    </p>
+                    <p class="text-white font-bold text-xs uppercase tracking-widest mt-auto">Mark Donovan — Operations Manager</p>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 relative shadow-lg">
-                    <i class="fas fa-quote-left text-accent text-2xl mb-4 opacity-50"></i>
-                    <p class="text-gray-300 italic mb-6 leading-relaxed">
-                        "The AI-powered content pipeline is incredible. We can now turn one video into a month's worth of social content automatically, keeping our brand voice perfectly consistent."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-gray-700 rounded-full mr-3 flex items-center justify-center font-bold text-accent">EV</div>
-                        <div>
-                            <p class="text-white font-bold text-sm">Elena Vance</p>
-                            <p class="text-gray-500 text-xs">Creative Director</p>
-                        </div>
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 flex flex-col h-full shadow-xl">
+                    <div class="flex text-yellow-500 mb-4 text-xs">
+                        <i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star"></i>
                     </div>
+                    <p class="text-gray-300 italic mb-6 font-light leading-relaxed">
+                        "The AI-powered content pipeline Gilbert created allowed us to scale our social media presence without increasing our overhead. We can now turn a single long-form video into dozens of captions and short scripts with perfect brand consistency. It is the most efficient marketing system we have ever implemented."
+                    </p>
+                    <p class="text-white font-bold text-xs uppercase tracking-widest mt-auto">Elena Vance — Creative Director</p>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 flex flex-col h-full shadow-xl">
+                    <div class="flex text-yellow-500 mb-4 text-xs">
+                        <i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-6 font-light leading-relaxed">
+                        "The meeting summary automation has completely changed the way our leadership team operates day-to-day. We receive concise action items and summaries immediately after every call, which are then automatically assigned in Asana. His ability to automate 'busy work' has allowed us to focus solely on high-level strategy."
+                    </p>
+                    <p class="text-white font-bold text-xs uppercase tracking-widest mt-auto">David Thorne — CEO</p>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="bg-charcoal p-8 rounded-2xl border border-gray-800 flex flex-col h-full shadow-xl">
+                    <div class="flex text-yellow-500 mb-4 text-xs">
+                        <i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 italic mb-6 font-light leading-relaxed">
+                        "We had a cluttered CRM full of duplicates that was hindering our sales performance significantly. Gilbert built a robust validation workflow that cleans every incoming lead and merges existing records automatically. Our database is now a high-performing asset thanks to his meticulous attention to data integrity."
+                    </p>
+                    <p class="text-white font-bold text-xs uppercase tracking-widest mt-auto">Samantha Reed — Sales Director</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-16 bg-obsidian border-t border-gray-900 text-center">
-        <div class="container mx-auto px-8 md:px-20">
-            <h2 class="text-2xl font-bold mb-4 text-accent tracking-widest uppercase">GD-Automations</h2>
-            <p class="text-gray-500 mb-8 font-light">Gilbert Dulnuan | Manila, Philippines</p>
-            <div class="flex justify-center space-x-8 text-2xl text-gray-400">
-                <a href="https://wa.me/79996792790" class="hover:text-accent transition"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:gilbeydulnuan@gmail.com" class="hover:text-accent transition"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="mt-12 text-[10px] text-gray-700 uppercase tracking-widest">© 2024 GD-Automations. All Rights Reserved.</p>
+    <!-- BOOK ME SECTION -->
+    <section id="booking" class="py-24 bg-charcoal border-y border-white/5 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-white uppercase tracking-widest mb-4">Book a Consultation</h2>
+            <p class="text-gray-400 font-light mb-12 max-w-2xl mx-auto">Select a time for us to discuss your automation roadmap.</p>
+            <button onclick="toggleBookingForm()" class="accent-btn px-12 py-5 rounded-xl text-xl font-bold uppercase tracking-widest shadow-xl">Open Calendar</button>
         </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 bg-obsidian text-center border-t border-white/5">
+        <h2 class="text-xl font-bold text-accent tracking-widest mb-6 uppercase">GD-AUTOMATIONS</h2>
+        <div class="flex justify-center space-x-8 text-2xl text-gray-500 mb-8">
+            <a href="https://wa.me/79996792790" target="_blank" class="hover:text-accent transition"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:gilbeydulnuan@gmail.com" class="hover:text-accent transition"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="text-[10px] text-gray-700 tracking-widest uppercase">© 2024 Gilbert Dulnuan.</p>
     </footer>
 
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="modal" onclick="closeLightbox(event)">
-        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
-            <div class="relative w-full bg-black flex justify-center p-2 border-b border-gray-800">
-                <button onclick="closeLightbox(event)" class="absolute top-4 right-4 text-accent text-3xl z-50 hover:scale-125 transition">&times;</button>
-                <img id="lightbox-img" class="max-h-[60vh] object-contain">
-            </div>
-            <div class="p-8 text-center md:text-left">
-                <h3 id="lightbox-title" class="text-2xl font-bold text-accent mb-4"></h3>
-                <p id="lightbox-desc" class="text-gray-300 leading-relaxed font-light"></p>
-            </div>
-        </div>
-    </div>
+    <!-- MODALS -->
+    <div id="lightbox" class="modal" onclick="closeLightbox()"><div class="max-w-4xl w-full bg-charcoal rounded-2xl overflow-hidden" onclick="event.stopPropagation()"><div class="relative bg-black flex justify-center p-4"><button onclick="closeLightbox()" class="absolute top-2 right-4 text-white text-3xl">&times;</button><img id="lightbox-img" class="max-h-[50vh] object-contain"></div><div class="p-8"><h3 id="lightbox-title" class="text-2xl font-bold text-accent mb-4"></h3><p id="lightbox-desc" class="text-gray-400 font-light leading-relaxed"></p></div></div></div>
 
-    <!-- FORM MODAL -->
-    <div id="form-modal" class="modal">
-        <div class="form-modal-content relative" onclick="event.stopPropagation()">
-            <button onclick="toggleForm()" class="absolute top-4 right-4 text-2xl text-accent hover:scale-125 transition z-50">&times;</button>
-            <iframe src="https://gtech01.onrender.com/form/fcc90db3-0d7f-42e7-97e7-00654d308194" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-    </div>
+    <div id="booking-modal" class="modal"><div class="bg-white border border-white/20 rounded-2xl w-full max-w-4xl h-[85vh] overflow-hidden relative" onclick="event.stopPropagation()"><button onclick="toggleBookingForm()" class="absolute top-2 right-4 text-white text-3xl z-50">&times;</button><iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1JdDSI4U3hhO_KC9n93prgUxfPw46WPaQ5iWsBtYYrBlfdP-lQSMiVT1sa7o7_UnAPi4ijuKTy?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe></div></div>
+
+    <div id="contact-modal" class="modal"><div class="bg-black border border-white/20 rounded-2xl w-full max-w-xl h-[85vh] overflow-hidden relative" onclick="event.stopPropagation()"><button onclick="toggleContactForm()" class="absolute top-2 right-4 text-white text-3xl z-50">&times;</button><iframe src="https://gtech01.onrender.com/form/fcc90db3-0d7f-42e7-97e7-00654d308194" width="100%" height="100%" frameborder="0"></iframe></div></div>
 
     <script>
         const projects = [
-    {
-        img: 'projects/project1.png',
-        title: 'Real Estate AI Agent',
-        desc: 'Problem: Manual lead follow-up was slow and resulted in lost prospects. <br><br>Solution: I built a Telegram-based AI agent that uses a custom knowledge base to provide instant property details 24/7.'
-    },
-    {
-        img: 'projects/project2.png',
-        title: 'Multi-Tool Sync Engine',
-        desc: 'Problem: Teams were wasting hours syncing data between Asana, Xero, and Google Sheets. <br><br>Solution: I engineered a Make.com flow that automates cross-platform updates whenever a task milestone is hit.'
-    },
-    {
-        img: 'projects/project3.png',
-        title: 'AI Invoice Processor',
-        desc: 'Problem: Processing email attachments manually led to naming errors and missed data. <br><br>Solution: I used Google Gemini AI to analyze attachments, rename files intelligently, and log them into a CRM automatically.'
-    },
-    {
-        img: 'projects/project4.png',
-        title: 'High-Priority Lead Routing',
-        desc: 'Problem: High-value leads were often mixed with general inquiries. <br><br>Solution: I implemented a Zapier AI filter to categorize emails and send instant Slack alerts for high-priority opportunities.'
-    },
-    {
-        img: 'projects/project5.png',
-        title: 'Voice AI Booking Logic',
-        desc: 'Problem: Voice agents lacked a reliable way to check real-time calendar availability. <br><br>Solution: I built an Airtable-linked Make scenario that manages appointment slots for AI voice assistants via Vapi.'
-    },
-    {
-        img: 'projects/project6.png',
-        title: 'CRM Enrichment Flow',
-        desc: 'Problem: Incoming leads lacked crucial business data for the sales team. <br><br>Solution: I integrated Apollo.io with HubSpot to automatically enrich new contacts with company size and industry details.'
-    },
-    {
-        img: 'projects/project7.png',
-        title: 'Lead CRM in Asana',
-        desc: 'Problem: Manual follow ups on the lead is inconsistent. <br><br>Solution: I built a Zapier workflow that automatically send emails and follow up leads according to their status in Asana.'
-    },
-    {
-        img: 'projects/project8.png',
-        title: 'Lead Temp Logic Engine',
-        desc: 'Problem: Sales teams were losing hot leads because inquiries were treated with the same priority. <br><br>Solution: I utilized JavaScript coding blocks to analyze intent and route leads through Hot/Cold paths.'
-    },
-    {
-        img: 'projects/project9.png',
-        title: 'Validated CRM Intake',
-        desc: 'Problem: The CRM database was cluttered with invalid emails. <br><br>Solution: I implemented a robust validation workflow that verifies email formats and merges records to ensure a clean pipeline.'
-    }
-];
+            { img: 'projects/project1.png', title: 'Real Estate AI Agent', desc: 'Problem: Manual lead follow-up was slow. Solution: Built a Telegram AI agent with a knowledge base for 24/7 property inquiries.' },
+            { img: 'projects/project2.png', title: 'Multi-Tool Sync Engine', desc: 'Problem: Data silos between Asana and Xero. Solution: Engineered Make.com automation for real-time finance syncing.' },
+            { img: 'projects/project3.png', title: 'AI Invoice Processor', desc: 'Problem: Attachment naming errors. Solution: Google Gemini AI file parsing and automated CRM entry.' },
+            { img: 'projects/project4.png', title: 'Lead Routing', desc: 'Problem: Response delays for high-value leads. Solution: Zapier AI filter for instant Slack priority alerts.' },
+            { img: 'projects/project5.png', title: 'Voice AI Booking', desc: 'Problem: No real-time scheduling for voice agents. Solution: Airtable-Make scenario for Vapi AI assistants.' },
+            { img: 'projects/project6.png', title: 'Lead Enrichment', desc: 'Problem: Missing contact data. Solution: Apollo.io integration for automatic HubSpot enrichment.' },
+            { img: 'projects/project7.png', title: 'Lead CRM in Asana', desc: 'Problem: Inconsistent manual follow-ups. Solution: Zapier automation triggered by Asana status updates.' },
+            { img: 'projects/project8.png', title: 'Lead Temp Logic', desc: 'Problem: Hot leads mixed with cold. Solution: JS coding blocks to analyze intent and route leads.' },
+            { img: 'projects/project9.png', title: 'Validated CRM Intake', desc: 'Problem: CRM was cluttered with duplicates. Solution: Validation workflows to clean and merge records.' }
+        ];
 
-let currentIdx = 0;
-
-// Initialize Thumbs
-function initCarousel() {
-    const slider = document.getElementById('thumb-slider');
-    slider.innerHTML = ''; // Clear existing
-    projects.forEach((proj, index) => {
-        const thumb = document.createElement('div');
-        thumb.className = `min-w-[120px] md:min-w-[160px] aspect-video rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-300 ${index === 0 ? 'border-accent opacity-100 scale-105' : 'border-transparent opacity-40 hover:opacity-70'}`;
-        thumb.innerHTML = `<img src="${proj.img}" class="w-full h-full object-cover">`;
-        thumb.onclick = () => updateStage(index);
-        slider.appendChild(thumb);
-    });
-}
-
-// Arrow Navigation Function
-function changeProject(direction) {
-    let nextIdx = currentIdx + direction;
-    if (nextIdx < 0) nextIdx = projects.length - 1;
-    if (nextIdx >= projects.length) nextIdx = 0;
-    updateStage(nextIdx);
-}
-
-// Main Update Logic
-function updateStage(index) {
-    currentIdx = index;
-    const stage = document.getElementById('main-stage');
-    const stageImg = document.getElementById('stage-img');
-    const stageTitle = document.getElementById('stage-title');
-    const stageDesc = document.getElementById('stage-desc');
-    const thumbs = document.getElementById('thumb-slider').children;
-
-    // Transition effect
-    stage.style.opacity = '0.3';
-    
-    setTimeout(() => {
-        stageImg.src = projects[index].img;
-        stageTitle.innerText = projects[index].title;
-        stageDesc.innerHTML = projects[index].desc;
-        stage.style.opacity = '1';
-        
-        // Auto-scroll thumbnails to center the active one
-        const thumb = thumbs[index];
-        const container = document.getElementById('thumb-viewport');
-        const scrollPos = thumb.offsetLeft - (container.offsetWidth / 2) + (thumb.offsetWidth / 2);
-        document.getElementById('thumb-slider').style.transform = `translateX(${-Math.max(0, scrollPos)}px)`;
-    }, 200);
-
-    // Update active thumbnail UI
-    Array.from(thumbs).forEach((t, i) => {
-        if(i === index) {
-            t.classList.add('border-accent', 'opacity-100', 'scale-105');
-            t.classList.remove('border-transparent', 'opacity-40');
-        } else {
-            t.classList.remove('border-accent', 'opacity-100', 'scale-105');
-            t.classList.add('border-transparent', 'opacity-40');
+        let currentIdx = 0;
+        function initCarousel() {
+            const slider = document.getElementById('thumb-slider');
+            projects.forEach((proj, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `min-w-[120px] md:min-w-[160px] aspect-video rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-300 border-transparent opacity-40`;
+                thumb.innerHTML = `<img src="${proj.img}" class="w-full h-full object-cover">`;
+                thumb.onclick = () => updateStage(index);
+                slider.appendChild(thumb);
+            });
+            updateStage(0);
         }
-    });
-}
 
-document.addEventListener('DOMContentLoaded', initCarousel);
+        function changeProject(dir) {
+            let next = currentIdx + dir;
+            if (next < 0) next = projects.length - 1;
+            if (next >= projects.length) next = 0;
+            updateStage(next);
+        }
 
-        // Reset position on window resize to prevent alignment issues
-        window.addEventListener('resize', () => {
-            currentProjectIndex = 0;
-            document.getElementById('project-slider').style.transform = `translateX(0px)`;
-        });
+        function updateStage(index) {
+            currentIdx = index;
+            const stage = document.getElementById('main-stage');
+            const slider = document.getElementById('thumb-slider');
+            stage.style.opacity = '0.3';
+            setTimeout(() => {
+                document.getElementById('stage-img').src = projects[index].img;
+                document.getElementById('stage-title').innerText = projects[index].title;
+                document.getElementById('stage-desc').innerHTML = projects[index].desc;
+                stage.style.opacity = '1';
+                const thumb = slider.children[index];
+                const viewport = document.getElementById('thumb-viewport');
+                const scrollPos = thumb.offsetLeft - (viewport.offsetWidth / 2) + (thumb.offsetWidth / 2);
+                slider.style.transform = `translateX(${-Math.max(0, scrollPos)}px)`;
+            }, 200);
 
-        function openProjectLightbox(imgSrc, title, desc) {
-            const lightbox = document.getElementById('lightbox');
-            document.getElementById('lightbox-img').src = imgSrc;
+            Array.from(slider.children).forEach((t, i) => {
+                t.className = `min-w-[120px] md:min-w-[160px] aspect-video rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-300 ${i === index ? 'border-accent opacity-100 scale-105' : 'border-transparent opacity-40'}`;
+            });
+        }
+
+        function openProjectLightbox(src, title, desc) {
+            document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox-title').innerText = title;
             document.getElementById('lightbox-desc').innerText = desc;
-            lightbox.classList.add('active');
+            document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
-        function closeLightbox(e) {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        
+        function toggleBookingForm() { 
+            const m = document.getElementById('booking-modal'); 
+            m.classList.toggle('active'); 
+            document.body.style.overflow = m.classList.contains('active') ? 'hidden' : 'auto'; 
+        }
+        
+        function toggleContactForm() { 
+            const m = document.getElementById('contact-modal'); 
+            m.classList.toggle('active'); 
+            document.body.style.overflow = m.classList.contains('active') ? 'hidden' : 'auto'; 
         }
 
-        function toggleForm() {
-            const modal = document.getElementById('form-modal');
-            modal.classList.toggle('active');
-            document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : 'auto';
-        }
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-                document.getElementById('form-modal').classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); document.getElementById('booking-modal').classList.remove('active'); document.getElementById('contact-modal').classList.remove('active'); document.body.style.overflow = 'auto'; } });
+        document.addEventListener('DOMContentLoaded', initCarousel);
     </script>
 </body>
 </html>
