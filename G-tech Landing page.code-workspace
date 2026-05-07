@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../asset for gtech/certificates"
+		},
+		{
+			"path": "../asset for gtech/heroPose"
+		},
+		{
+			"path": "../asset for gtech/projects"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "G-tech Landing page"
+	}
+}
