@@ -37,7 +37,6 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('bg/bg1.jpg'); 
             background-size: cover; background-position: center;
-            
             z-index: 1;
         }
         .hero-overlay {
@@ -73,6 +72,20 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--obsidian); }
         ::-webkit-scrollbar-thumb { background: var(--accent-gray); border-radius: 10px; }
+        #lightbox-img {
+        /* This ensures the image takes up 90% of the screen width */
+        width: 90%; 
+        
+        /* Limits height so you don't have to scroll to see the whole image */
+        max-height: 80vh; 
+        
+        /* Maintains the aspect ratio so the photo doesn't look stretched */
+        object-fit: contain; 
+        
+        /* Optional: adds a nice border or shadow to make it pop */
+        border-radius: 8px;
+        box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -123,12 +136,14 @@
             <div class="md:w-3/5 text-left">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent mb-6">About Me</h2>
                 <p class="text-base md:text-xl text-gray-300 leading-relaxed font-light mb-8">
-                    I am <strong>Gilbert Dulnuan</strong>, an AI automation specialist. I build bridges between complex business processes and intelligent technology.
+                    I am <strong>Gilbert Dulnuan</strong>, an AI Automation Specialist. I design and deploy intelligent systems that bridge the gap between business software and advanced AI models, acting as a technical architect who replaces repetitive tasks with workflows capable of reasoning and autonomous decision-making. By leveraging tools like Zapier, Make.com, n8n, and custom code, I build sophisticated digital workforces that handle complex data and customer engagement 24/7 to revolutionize operational efficiency.
                 </p>
                 <div class="flex gap-12 mb-10">
                     <div class="flex flex-col"><span class="text-white font-bold text-3xl">3+</span><span class="text-gray-500 text-[10px] tracking-widest uppercase">Years Exp.</span></div>
                     <div class="flex flex-col"><span class="text-white font-bold text-3xl">100+</span><span class="text-gray-500 text-[10px] tracking-widest uppercase">Automations</span></div>
                 </div>
+
+                
                 <div class="flex flex-row flex-wrap gap-4">
                     <img src="certificates/cert1.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert1.png', 'GHL Specialist', 'Full mastery.')">
                     <img src="certificates/cert2.png" class="cert-thumb" onclick="openProjectLightbox('certificates/cert2.png', 'Make.com', 'Advanced scenario engineering.')">
@@ -312,15 +327,15 @@
 
     <script>
         const projects = [
-            { img: 'projects/project1.png', title: 'Real Estate AI Agent', desc: 'Problem: Manual lead follow-up was slow. Solution: Built a Telegram AI agent with a knowledge base for 24/7 property inquiries.' },
-            { img: 'projects/project2.png', title: 'Multi-Tool Sync Engine', desc: 'Problem: Data silos between Asana and Xero. Solution: Engineered Make.com automation for real-time finance syncing.' },
-            { img: 'projects/project3.png', title: 'AI Invoice Processor', desc: 'Problem: Attachment naming errors. Solution: Google Gemini AI file parsing and automated CRM entry.' },
-            { img: 'projects/project4.png', title: 'Lead Routing', desc: 'Problem: Response delays for high-value leads. Solution: Zapier AI filter for instant Slack priority alerts.' },
-            { img: 'projects/project5.png', title: 'Voice AI Booking', desc: 'Problem: No real-time scheduling for voice agents. Solution: Airtable-Make scenario for Vapi AI assistants.' },
-            { img: 'projects/project6.png', title: 'Lead Enrichment', desc: 'Problem: Missing contact data. Solution: Apollo.io integration for automatic HubSpot enrichment.' },
-            { img: 'projects/project7.png', title: 'Lead CRM in Asana', desc: 'Problem: Inconsistent manual follow-ups. Solution: Zapier automation triggered by Asana status updates.' },
-            { img: 'projects/project8.png', title: 'Lead Temp Logic', desc: 'Problem: Hot leads mixed with cold. Solution: JS coding blocks to analyze intent and route leads.' },
-            { img: 'projects/project9.png', title: 'Validated CRM Intake', desc: 'Problem: CRM was cluttered with duplicates. Solution: Validation workflows to clean and merge records.' }
+            { img: 'projects/project1.png', title: 'Real Estate AI Agent', desc: '<strong>The Problem:</strong><br>Real estate leads often require immediate responses to common questions about listings, but manual monitoring of Telegram 24/7 is impossible for human agents. <br><br><strong>What the Workflow Does:</strong><br>This n8n workflow uses a Telegram trigger to capture incoming messages and routes them to a specialized AI Agent. The agent utilizes "Simple Memory" to maintain context of the conversation and connects to a "Knowledge Base Document" to provide accurate, property-specific details. Once the AI processes the inquiry, it automatically sends a helpful, natural-language response back to the user via Telegram.' },
+            { img: 'projects/project2.png', title: 'Cross-Platform Project Sync', desc: '<strong>The Problem:</strong><br>Keeping financial data (Xero) and project management tasks (Asana) synced with a central spreadsheet (Google Sheets) usually involves tedious manual data entry and carries a high risk of error.<br><br><strong>What the Workflow Does:</strong><br>This Make.com scenario monitors Asana for completed tasks and triggers an API call to Xero to ensure financial records are updated accordingly. It uses a Router to split the data: one path uses an Iterator to add clean rows to a Google Sheet, while the other handles complex text aggregation and file uploads back into Asana. This creates a closed-loop system where all three platforms stay perfectly aligned without human intervention.' },
+            { img: 'projects/project3.png', title: 'AI Document Processing & Archiving (Make.com)', desc: `<strong>The Problem:</strong><br>Manually renaming and sorting email attachments is a major time sink, and standard automation often fails to recognize the actual content or "intent" of a document.<br><br><strong>What the Workflow Does:</strong><br>This workflow watches for new emails with attachments and passes them to Google Gemini AI for advanced content analysis. The AI intelligently generates a descriptive new filename based on the document's contents, which is then used to save the file into Google Drive and log the event in Google Sheets. Finally, it sends a confirmation email, ensuring the user knows exactly where the processed file is stored.` },
+            { img: 'projects/project4.png', title: 'Intelligent Inquiry Routing (Zapier)', desc: '<strong>The Problem:</strong><br>Customer support teams often get overwhelmed because "Urgent" issues are buried under general "Inquiries," leading to slow response times for high-priority clients.<br><br><strong>What the Workflow Does:</strong><br>This Zapier path uses "AI by Zapier" to scan and analyze the sentiment and intent of every incoming Gmail message. Based on this analysis, the workflow splits into two distinct paths: "Urgent" messages are immediately pushed to a specific high-priority Slack channel, while general "Inquiries" are sent to a separate channel for standard processing. This ensures that the team always sees the most critical tasks first.' },
+            { img: 'projects/project5.png', title: 'Autonomous Booking System', desc: '<strong>The Problem:</strong><br>Scheduling appointments involves "calendar Tetris"—constantly checking availability and manually emailing back and forth to confirm slots, which often leads to double-bookings.<br><br><strong>What the Workflow Does:</strong><br>This sophisticated n8n workflow manages the entire booking lifecycle by connecting a Vapi voice/chat interface to a Google Calendar and Airtable database. It checks for open slots in real-time, formats the time zones, and either confirms the booking or handles error responses if a slot is taken. Once a booking is confirmed, it logs the record in Airtable and sends a success response, providing a completely hands-off scheduling experience.' },
+            { img: 'projects/project6.png', title: 'Lead Enrichment & Prioritization', desc: '<strong>The Problem:</strong><br>Sales teams often waste time on "cold" leads because they lack context on who a person is or where they work, leading to a generic outreach strategy that has low conversion rates.<br><br><strong>What the Workflow Does:</strong><br>This Zapier automation catches new leads via Webhook and immediately uses JavaScript to parse and clean the data. It then triggers an enrichment step through Apollo to gather deep professional insights before using a "Path" to split leads into High and Low priority. High-priority leads are automatically added to HubSpot with a custom AI-generated welcome email, while low-priority leads are simply logged in Google Sheets for future nurturing.' },
+            { img: 'projects/project7.png', title: 'Dynamic Service Management', desc: '<strong>The Problem:</strong><br>Service-based businesses (like car detailing or paint jobs) struggle to manage the different communication needs of a customer as they move through various stages like "Quoted," "Approved," or "Paid".<br><br><strong>What the Workflow Does:</strong><br>This massive Zapier architecture monitors Asana for task updates and acts as a central command center for the entire customer journey. It uses complex multi-path logic to trigger specific actions—such as creating sub-tasks for the team when a job is "Ready to Start" or sending specific invoices via Gmail when a status hits "Paid." This ensures that no matter what service the customer has chosen, they receive a perfectly timed and relevant experience without any manual oversight.' },
+            { img: 'projects/project8.png', title: 'Automated Lead Qualification', desc: `<strong>The Problem:</strong><br>Marketing departments often receive a flood of raw lead data via email that is unstructured, making it difficult to quickly distinguish between a "Hot Lead" and a "Cold Lead" for immediate follow-up.<br><br><strong>What the Workflow Does:</strong><br>This n8n workflow triggers upon receiving a new Gmail message and uses a JavaScript node to extract and categorize key data points from the body of the email. A "Switch" node then evaluates these criteria to route the contact into two distinct nurturing tracks. Depending on the lead's "temperature," the system automatically fetches the correct row in a Google Sheet, sends a tailored response, and updates the status to ensure the CRM remains current.` },
+            { img: 'projects/project9.png', title: 'Data Integrity & Lead Validation', desc: `<strong>The Problem:</strong><br>Inbound data frequently contains errors, such as invalid email addresses or duplicate entries, which can "pollute" a database and lead to wasted marketing spend on non-existent contacts.<br><br><strong>What the Workflow Does:</strong><br>This workflow acts as a gatekeeper for incoming data by first cleaning the input and running a strict email validation check. If the email is valid, it searches an existing Google Sheet to see if the contact already exists; it then merges new data into the old row to prevent duplicates or appends a new row if the user is unique. If the email is invalid, it triggers an immediate automated response to the source, requesting the correct information so the lead isn't lost.` }
         ];
 
         let currentIdx = 0;
@@ -364,10 +379,11 @@
             });
         }
 
+        
         function openProjectLightbox(src, title, desc) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox-title').innerText = title;
-            document.getElementById('lightbox-desc').innerText = desc;
+            document.getElementById('lightbox-desc').innerHTML = desc;
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
