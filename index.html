@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDA Systems | Enterprise AI Architecture & Workflow Orchestration</title>
-    <meta name="description" content="Engineering custom AI frameworks, RAG systems, and autonomous workflows for enterprise-scale operations.">
+    <meta name="description" content="Production-ready AI pipelines in weeks, not quarters. Secure RAG systems, autonomous loops, and SOC2-aligned governance.">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --accent: #ff5c00; /* Signature Orange from image */
-            --obsidian: #000000; /* Pure Black */
+            --accent: #ff5c00; 
+            --obsidian: #000000; 
             --charcoal: #080808;
             --glass: rgba(255, 255, 255, 0.02);
             --border: rgba(255, 255, 255, 0.1);
@@ -28,20 +27,20 @@
             background-color: var(--obsidian);
             color: #ffffff;
             overflow-x: hidden;
+            width: 100%;
         }
 
         .sticky-nav {
             backdrop-filter: blur(20px);
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0);
             border-bottom: 1px solid var(--border);
         }
 
-        /* The Chip Logo Styling */
         .logo-chip {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 4px 8px;
+            padding: 4px 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -70,13 +69,12 @@
             transform: translateY(-2px);
         }
 
-        /* Slanted Marquee from the reference image */
         .marquee-container {
             background: #ffffff;
             color: #000000;
-            padding: 15px 0;
-            transform: rotate(-2deg) scale(1.05);
-            margin: 40px 0;
+            padding: 18px 0;
+            transform: rotate(-1.5deg) scale(1.05);
+            margin: 60px 0;
             font-weight: 800;
             text-transform: uppercase;
             font-size: 14px;
@@ -90,7 +88,7 @@
 
         .marquee-content {
             display: flex;
-            animation: scroll 20s linear infinite;
+            animation: scroll 30s linear infinite;
         }
 
         @keyframes scroll {
@@ -98,30 +96,22 @@
             to { transform: translateX(-50%); }
         }
 
-        .dot-sep {
-            color: var(--accent);
-            margin: 0 30px;
-        }
+        .dot-sep { color: var(--accent); margin: 0 40px; }
 
-        .solution-card {
+        .solution-card, .gov-card {
             background: var(--charcoal);
             border: 1px solid var(--border);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .solution-card:hover { 
+        .solution-card:hover, .gov-card:hover { 
             border-color: var(--accent);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            background: rgba(255, 92, 0, 0.02);
         }
 
-        .calendar-container {
-            background: #ffffff;
-            border-radius: 2px;
-            overflow: hidden;
-        }
+        .calendar-container { background: #ffffff; border-radius: 2px; overflow: hidden; }
 
-        .hero-title span {
-            color: #555; /* Muted contrast like the image */
-        }
+        .hero-title span { color: var(--accent); }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #000; }
@@ -135,22 +125,18 @@
         <div class="container mx-auto px-6 md:px-16 py-5 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-3 group">
                 <div class="logo-chip">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                        <rect x="9" y="9" width="6" height="6"></rect>
-                        <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path>
-                    </svg>
+                    <i class="fa-solid fa-microchip text-orange-500 text-sm"></i>
                     <span class="logo-text">GDA-SYSTEMS</span>
                 </div>
             </a>
 
             <div class="hidden lg:flex space-x-10 text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
+                <a href="#governance" class="hover:text-white transition">Governance</a>
                 <a href="#solutions" class="hover:text-white transition">Solutions</a>
                 <a href="#works" class="hover:text-white transition">Case Studies</a>
-                <a href="#governance" class="hover:text-white transition">Governance</a>
             </div>
-            <a href="#audit" class="accent-btn px-6 py-2 rounded-sm text-[10px] uppercase">
-                Request Audit
+            <a href="#roadmap" class="accent-btn px-6 py-2 rounded-sm text-[10px] uppercase">
+                Book Roadmap Session
             </a>
         </div>
     </nav>
@@ -160,15 +146,15 @@
         <div class="container mx-auto px-6 md:px-16 relative z-10">
             <div class="max-w-5xl">
                 <p class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-8">Architecture for the Autonomous Age</p>
-                <h1 class="hero-title text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter leading-[0.9] mb-12">
-                    Scale.<span>Automate.</span><br>Optimize.
+                <h1 class="hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none md:leading-[0.9] mb-12">
+                    Enterprise AI pipelines <span>in weeks, not quarters.</span>
                 </h1>
                 <p class="text-lg md:text-2xl text-gray-400 max-w-2xl mb-12 font-light leading-relaxed">
-                    We engineer custom AI frameworks that integrate fragmented data and automate mission-critical workflows.
+                    We bypass the "discovery bloat" of traditional agencies to engineer custom AI frameworks that integrate siloed data and automate mission-critical workflows.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="#audit" class="accent-btn px-10 py-5 rounded-sm text-sm uppercase">
-                        Book for free audit
+                    <a href="#roadmap" class="accent-btn px-10 py-5 rounded-sm text-sm uppercase">
+                        Book Strategic Roadmap
                     </a>
                     <a href="#works" class="flex items-center gap-4 text-white hover:text-orange-500 transition tracking-widest text-xs font-bold uppercase">
                         View ROI Case Studies <i class="fas fa-arrow-right text-orange-500"></i>
@@ -178,7 +164,103 @@
         </div>
     </section>
 
-    <!-- SLANTED MARQUEE (The Theme Element) -->
+    <!-- TECH STACK SECTION -->
+    <div class="bg-black border-y border-white/5">
+        <div class="container mx-auto px-6 md:px-16 py-12">
+            <p class="text-[9px] tracking-[0.3em] text-center text-gray-500 uppercase mb-8 font-bold">Engineered with Industry Standards</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-3"><i class="fab fa-python text-2xl"></i> <span class="font-bold text-xs tracking-tighter">Python</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-database text-2xl"></i> <span class="font-bold text-xs tracking-tighter">Pinecone</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-network-wired text-2xl"></i> <span class="font-bold text-xs tracking-tighter">LangChain</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-gears text-2xl"></i> <span class="font-bold text-xs tracking-tighter">n8n / Make</span></div>
+                <div class="flex items-center gap-3"><i class="fab fa-aws text-2xl"></i> <span class="font-bold text-xs tracking-tighter">AWS</span></div>
+                <div class="flex items-center gap-3"><i class="fa-solid fa-microchip text-2xl"></i> <span class="font-bold text-xs tracking-tighter">OpenAI / Anthropic</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW PAIN POINT SECTION -->
+<section class="py-24 bg-[#050505]">
+    <div class="container mx-auto px-6 md:px-16">
+        <div class="max-w-4xl">
+            <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">The Problem</h2>
+            <h3 class="text-3xl md:text-5xl font-extrabold mb-12 leading-tight">
+                Most enterprises are running on <br>
+                <span class="text-orange-500 italic">"Manual Middleware."</span>
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="border-l border-orange-500/30 pl-8">
+                    <p class="text-white font-bold mb-2">Siloed Intelligence</p>
+                    <p class="text-gray-500 text-sm">Your data lives in HubSpot, QuickBooks, and PDFs, but none of them talk to each other. Your team spends 40% of their week acting as the "bridge."</p>
+                </div>
+                <div class="border-l border-orange-500/30 pl-8">
+                    <p class="text-white font-bold mb-2">The Discovery Trap</p>
+                    <p class="text-gray-500 text-sm">Traditional consultants spend 3 months "mapping" and 0 days "building." By the time they deploy, your requirements have already changed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- GOVERNANCE SECTION (MOVED UP FOR ENTERPRISE TRUST) -->
+    <section id="governance" class="py-32 bg-black">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">Security First</h2>
+                    <h3 class="text-4xl md:text-6xl font-extrabold mb-8">Enterprise-Grade <br>Governance.</h3>
+                    <p class="text-gray-400 text-lg mb-12 font-light leading-relaxed">
+                        We handle 90% of your corporate security objections before they arise. GDA Systems builds security into the core architecture, ensuring your data remains your most protected asset.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 shrink-0 bg-white/5 border border-white/10 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold mb-1 uppercase text-xs tracking-widest">Human-in-the-Loop (HITL)</h5>
+                                <p class="text-sm text-gray-500">Critical decision nodes require human verification before execution, preventing autonomous drift in mission-critical logic.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="w-12 h-12 shrink-0 bg-white/5 border border-white/10 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold mb-1 uppercase text-xs tracking-widest">Data Sovereignty & PII</h5>
+                                <p class="text-sm text-gray-500">Automated PII redaction and local vector storage protocols to keep sensitive data off public LLM training sets.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="gov-card p-10 text-center">
+                        <i class="fa-solid fa-lock text-orange-500 text-2xl mb-4"></i>
+                        <span class="text-2xl font-bold block mb-1">AES-256</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Encryption Standard</span>
+                    </div>
+                    <div class="gov-card p-10 text-center">
+                        <i class="fa-solid fa-file-shield text-orange-500 text-2xl mb-4"></i>
+                        <span class="text-2xl font-bold block mb-1">SOC2</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Framework Alignment</span>
+                    </div>
+                    <div class="gov-card p-10 text-center">
+                        <i class="fa-solid fa-list-check text-orange-500 text-2xl mb-4"></i>
+                        <span class="text-2xl font-bold block mb-1">Audit</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Full Decision Logging</span>
+                    </div>
+                    <div class="gov-card p-10 text-center">
+                        <i class="fa-solid fa-scale-balanced text-orange-500 text-2xl mb-4"></i>
+                        <span class="text-2xl font-bold block mb-1">GDPR</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Privacy Compliant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLANTED MARQUEE -->
     <div class="marquee-container">
         <div class="marquee-content">
             <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
@@ -187,46 +269,66 @@
     </div>
 
     <!-- SOLUTIONS SECTION -->
-    <section id="solutions" class="py-32 bg-black">
+    <section id="solutions" class="py-32 bg-black border-b border-white/5">
         <div class="container mx-auto px-6 md:px-16">
             <div class="mb-24">
                 <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">Core Capabilities</h2>
                 <h3 class="text-4xl md:text-6xl font-extrabold">Strategic AI Solutions</h3>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="solution-card p-12 rounded-sm flex flex-col">
-                    <i class="fas fa-layer-group text-2xl mb-8 text-orange-500"></i>
-                    <h4 class="text-xl font-bold mb-4">Business Process Re-engineering</h4>
-                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Architecting end-to-end autonomous workflows that bridge siloed enterprise software.</p>
-                    <ul class="text-[10px] tracking-widest text-gray-400 space-y-3 mt-auto uppercase font-bold">
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> ERP Sync</li>
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> API Middleware</li>
-                    </ul>
+                    <i class="fa-solid fa-diagram-project text-3xl mb-10 text-orange-500"></i>
+                    <h4 class="text-2xl font-bold mb-6">Process Re-engineering</h4>
+                    <p class="text-gray-500 text-sm mb-10 leading-relaxed">Architecting end-to-end autonomous workflows that bridge siloed enterprise software, eliminating manual friction.</p>
+                    <div class="mt-auto space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-link text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Cross-Platform ERP Sync</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-code-branch text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Custom API Middleware</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="solution-card p-12 rounded-sm flex flex-col">
-                    <i class="fas fa-brain text-2xl mb-8 text-orange-500"></i>
-                    <h4 class="text-xl font-bold mb-4">Knowledge Retrieval (RAG)</h4>
-                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Deploying AI agents trained on proprietary documentation for instant data retrieval.</p>
-                    <ul class="text-[10px] tracking-widest text-gray-400 space-y-3 mt-auto uppercase font-bold">
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> Vector DB</li>
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> Semantic Search</li>
-                    </ul>
+                    <i class="fa-solid fa-brain text-3xl mb-10 text-orange-500"></i>
+                    <h4 class="text-2xl font-bold mb-6">Knowledge Retrieval (RAG)</h4>
+                    <p class="text-gray-500 text-sm mb-10 leading-relaxed">Deploying sophisticated AI agents trained on proprietary documentation to provide instant, accurate data retrieval.</p>
+                    <div class="mt-auto space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-database text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Vector DB Integration</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-magnifying-glass-chart text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Semantic Search Systems</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="solution-card p-12 rounded-sm flex flex-col">
-                    <i class="fas fa-shield-halved text-2xl mb-8 text-orange-500"></i>
-                    <h4 class="text-xl font-bold mb-4">AI Governance & Safety</h4>
-                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Implementing Human-in-the-Loop safeguards and data privacy layers.</p>
-                    <ul class="text-[10px] tracking-widest text-gray-400 space-y-3 mt-auto uppercase font-bold">
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> PII Redaction</li>
-                        <li><i class="fas fa-circle text-[6px] mr-2 text-orange-500"></i> Audit Trails</li>
-                    </ul>
+                    <i class="fa-solid fa-shield-halved text-3xl mb-10 text-orange-500"></i>
+                    <h4 class="text-2xl font-bold mb-6">Autonomous Logic</h4>
+                    <p class="text-gray-500 text-sm mb-10 leading-relaxed">Building self-correcting agentic loops that handle complex multi-step tasks without constant human oversight.</p>
+                    <div class="mt-auto space-y-4">
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-eye-slash text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Self-Healing Workflows</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-clipboard-check text-orange-500 text-[10px]"></i>
+                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Agentic Orchestration</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CASE STUDIES SECTION -->
-    <section id="works" class="py-32 bg-black border-t border-white/5">
+    <section id="works" class="py-32 bg-black">
         <div class="container mx-auto px-6 md:px-16">
             <div class="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
                 <div class="max-w-2xl">
@@ -234,23 +336,23 @@
                     <h3 class="text-4xl md:text-6xl font-extrabold">Case Studies & ROI</h3>
                 </div>
                 <div class="flex gap-4">
-                    <button onclick="changeProject(-1)" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-left"></i></button>
-                    <button onclick="changeProject(1)" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-right"></i></button>
+                    <button onclick="changeProject(-1)" aria-label="Previous Case Study" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-left"></i></button>
+                    <button onclick="changeProject(1)" aria-label="Next Case Study" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <div id="main-stage" class="transition-opacity duration-500">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="relative">
-                        <div class="bg-charcoal border border-white/10 overflow-hidden rounded-sm">
-                            <img id="stage-img" src="projects/project1.png" alt="Project" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700">
-                        </div>
+                    <div class="bg-charcoal border border-white/10 overflow-hidden rounded-sm aspect-video flex items-center justify-center">
+                        <img id="stage-img" src="https://images.unsplash.com/photo-1551288049-bbda4865cda1?auto=format&fit=crop&q=80&w=1000" alt="Project Case Study" class="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-[1.02] transition duration-500">
                     </div>
                     <div class="space-y-8">
                         <div id="stage-badge" class="inline-block px-3 py-1 bg-orange-500 text-black text-[9px] font-bold uppercase tracking-widest">Sector: Real Estate</div>
                         <h3 id="stage-title" class="text-4xl font-extrabold">Project Title</h3>
                         <div id="stage-desc" class="text-gray-400 font-light text-lg leading-relaxed space-y-4"></div>
-                        <a href="#audit" class="accent-btn px-8 py-4 rounded-sm text-[10px] uppercase">Inquire for Similar Solution</a>
+                        <div class="flex gap-4">
+                            <a href="#roadmap" class="accent-btn px-8 py-4 rounded-sm text-[10px] uppercase">Book Strategic Roadmap</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,51 +360,82 @@
     </section>
 
     <!-- CALENDAR SECTION -->
-    <section id="audit" class="py-32 bg-black">
+    <section id="roadmap" class="py-32 bg-black">
         <div class="container mx-auto px-6 md:px-16">
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">Consultation</h2>
-                    <h3 class="text-4xl md:text-6xl font-extrabold mb-6">Schedule Your AI Audit</h3>
-                    <p class="text-gray-400 max-w-xl mx-auto font-light">Select a time for a high-level architectural review of your automation potential.</p>
+                    <h3 class="text-4xl md:text-6xl font-extrabold mb-6">Strategic AI Roadmap</h3>
+                    <p class="text-gray-400 max-w-xl mx-auto font-light">Schedule a high-level architectural review to identify automation bottlenecks and feasibility. We build in weeks, not quarters.</p>
                 </div>
                 
-                <div class="calendar-container">
+                <div class="calendar-container shadow-2xl">
                     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3oGM-0tbm66H3VkHYtGwnMQLnHj7vcSUxkXsdW0pllSAg2iLXX8HZcGfI9BGmxKeAg4LYvcf8B?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-500 text-xs">Calendar not loading? <a href="mailto:gdulnuan.systems@gmail.com" class="text-orange-500 underline">Email us directly</a> to book your session.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-24 bg-black border-t border-white/5 text-center">
-        <h2 class="text-sm font-bold tracking-[0.5em] mb-12 uppercase text-white">GDA Systems Global</h2>
-        <div class="flex justify-center gap-12 mb-16 text-gray-500 text-2xl">
-            <a href="https://wa.me/79996792790" target="_blank" rel="noopener" class="hover:text-orange-500 transition"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:gilbeydulnuan@gmail.com" class="hover:text-orange-500 transition"><i class="fas fa-envelope"></i></a>
+    <footer class="py-24 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-3 gap-12 items-start text-left mb-16">
+                <div>
+                    <div class="logo-chip w-fit mb-6">
+                        <i class="fa-solid fa-microchip text-orange-500 text-sm"></i>
+                        <span class="logo-text">GDA-SYSTEMS</span>
+                    </div>
+                    <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
+                        Engineering autonomous logic and secure AI architecture for the modern enterprise.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Contact</h4>
+                    <a href="mailto:gdulnuan.systems@gmail.com" class="text-gray-500 hover:text-orange-500 transition text-sm">gdulnuan.systems@gmail.com</a>
+                    <a href="https://wa.me/77717628539" target="_blank" rel="noopener" class="text-gray-500 hover:text-orange-500 transition text-sm">+7 771 762 8539</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Social</h4>
+                    <a href="https://www.linkedin.com/in/gil-dulnuan/" target="_blank" rel="noopener" class="text-gray-500 hover:text-orange-500 transition text-sm flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2026 GDA Systems. Architecture for the Autonomous Age.</p>
+                <div class="flex gap-6 opacity-30 grayscale text-sm">
+                    <i class="fab fa-python" aria-hidden="true"></i>
+                    <i class="fas fa-database" aria-hidden="true"></i>
+                    <i class="fas fa-network-wired" aria-hidden="true"></i>
+                    <i class="fab fa-aws" aria-hidden="true"></i>
+                </div>
+            </div>
         </div>
-        <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2024 GDA Systems. Architecture for the Autonomous Age.</p>
     </footer>
 
     <script>
         const projects = [
             { 
-                img: 'projects/project1.png', 
+                img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000', 
                 sector: 'Real Estate / Asset Management',
-                title: 'Autonomous Asset Orchestration', 
-                desc: '<p><strong>Business Impact:</strong> Reduced lead response latency by 98% and reclaimed 120+ man-hours per month.</p><p><strong>The Solution:</strong> A RAG-enabled n8n framework using persistent memory to handle 24/7 Telegram-based property intelligence.</p>' 
+                title: 'High-Velocity Document Intelligence', 
+                desc: '<p><strong>Business Impact:</strong> Automated 1,200+ property document extractions per month, reducing manual verification time from 4 days to 4 minutes.</p><p><strong>The Solution:</strong> A production-grade n8n + Supabase pipeline utilizing GPT-4o for structured data extraction and automated archival.</p>' 
             },
             { 
-                img: 'projects/project2.png', 
+                img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000', 
                 sector: 'FinTech / Operations',
-                title: 'Cross-Silo Data Intelligence', 
-                desc: '<p><strong>Business Impact:</strong> Achieved 100% data integrity across global platforms and eliminated reconciliation errors.</p><p><strong>The Solution:</strong> Custom API orchestration between Xero, Asana, and internal ERP systems via Make.com middleware.</p>' 
+                title: 'Automated Financial Reconciliation', 
+                desc: '<p><strong>Business Impact:</strong> Achieved 100% data integrity across global platforms and reclaimed 40+ man-hours per week.</p><p><strong>The Solution:</strong> Custom API orchestration between Xero, Asana, and internal ERP systems via Make.com middleware with automated error-handling loops.</p>' 
             },
             { 
-                img: 'projects/project3.png', 
+                img: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&q=80&w=1000', 
                 sector: 'Logistics / Supply Chain',
-                title: 'Intelligent Document Intelligence', 
-                desc: '<p><strong>Business Impact:</strong> 90% reduction in manual document classification costs and accelerated archival speed.</p><p><strong>The Solution:</strong> Google Gemini-powered intent analysis pipeline that categorizes incoming documentation.</p>' 
+                title: 'Global Logistics Intent Engine', 
+                desc: '<p><strong>Business Impact:</strong> 90% reduction in manual document classification costs and sub-second archival speed for international bills of lading.</p><p><strong>The Solution:</strong> Google Gemini 1.5 Pro-powered intent analysis pipeline integrated with Pinecone vector storage for semantic retrieval.</p>' 
             }
         ];
 
