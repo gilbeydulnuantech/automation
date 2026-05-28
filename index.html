@@ -113,6 +113,106 @@
 
         .hero-title span { color: var(--accent); }
 
+        /* --- CHAT WIDGET STYLES --- */
+        #chat-widget-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 92, 0, 0.4);
+            z-index: 1000;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #chat-widget-button:hover { transform: scale(1.1) rotate(5deg); }
+
+        #chat-widget-container {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background-color: var(--charcoal);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        #chat-widget-header {
+            background-color: #111;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        #chat-widget-header span { font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+        #chat-widget-header button { background: none; border: none; color: #666; cursor: pointer; font-size: 18px; }
+
+        #chat-widget-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        #chat-widget-body p {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+
+        #chat-widget-footer {
+            padding: 15px;
+            background-color: #111;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+        }
+        #chat-widget-input {
+            flex: 1;
+            background: #000;
+            border: 1px solid var(--border);
+            padding: 10px 15px;
+            color: white;
+            font-size: 13px;
+            border-radius: 6px;
+            outline: none;
+        }
+        #chat-widget-input:focus { border-color: var(--accent); }
+        #chat-widget-send {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        #chat-widget-send:hover { opacity: 0.9; }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); }
@@ -179,31 +279,31 @@
         </div>
     </div>
 
-    <!-- NEW PAIN POINT SECTION -->
-<section class="py-24 bg-[#050505]">
-    <div class="container mx-auto px-6 md:px-16">
-        <div class="max-w-4xl">
-            <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">The Problem</h2>
-            <h3 class="text-3xl md:text-5xl font-extrabold mb-12 leading-tight">
-                Most enterprises are running on <br>
-                <span class="text-orange-500 italic">"Manual Middleware."</span>
-            </h3>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="border-l border-orange-500/30 pl-8">
-                    <p class="text-white font-bold mb-2">Siloed Intelligence</p>
-                    <p class="text-gray-500 text-sm">Your data lives in HubSpot, QuickBooks, and PDFs, but none of them talk to each other. Your team spends 40% of their week acting as the "bridge."</p>
-                </div>
-                <div class="border-l border-orange-500/30 pl-8">
-                    <p class="text-white font-bold mb-2">The Discovery Trap</p>
-                    <p class="text-gray-500 text-sm">Traditional consultants spend 3 months "mapping" and 0 days "building." By the time they deploy, your requirements have already changed.</p>
+    <!-- PAIN POINT SECTION -->
+    <section class="py-24 bg-[#050505]">
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="max-w-4xl">
+                <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">The Problem</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold mb-12 leading-tight">
+                    Most enterprises are running on <br>
+                    <span class="text-orange-500 italic">"Manual Middleware."</span>
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="border-l border-orange-500/30 pl-8">
+                        <p class="text-white font-bold mb-2">Siloed Intelligence</p>
+                        <p class="text-gray-500 text-sm">Your data lives in HubSpot, QuickBooks, and PDFs, but none of them talk to each other. Your team spends 40% of their week acting as the "bridge."</p>
+                    </div>
+                    <div class="border-l border-orange-500/30 pl-8">
+                        <p class="text-white font-bold mb-2">The Discovery Trap</p>
+                        <p class="text-gray-500 text-sm">Traditional consultants spend 3 months "mapping" and 0 days "building." By the time they deploy, your requirements have already changed.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- GOVERNANCE SECTION (MOVED UP FOR ENTERPRISE TRUST) -->
+    <!-- GOVERNANCE SECTION -->
     <section id="governance" class="py-32 bg-black">
         <div class="container mx-auto px-6 md:px-16">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
@@ -260,14 +360,6 @@
         </div>
     </section>
 
-    <!-- SLANTED MARQUEE -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
-            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
-        </div>
-    </div>
-
     <!-- SOLUTIONS SECTION -->
     <section id="solutions" class="py-32 bg-black border-b border-white/5">
         <div class="container mx-auto px-6 md:px-16">
@@ -280,48 +372,16 @@
                     <i class="fa-solid fa-diagram-project text-3xl mb-10 text-orange-500"></i>
                     <h4 class="text-2xl font-bold mb-6">Process Re-engineering</h4>
                     <p class="text-gray-500 text-sm mb-10 leading-relaxed">Architecting end-to-end autonomous workflows that bridge siloed enterprise software, eliminating manual friction.</p>
-                    <div class="mt-auto space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-link text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Cross-Platform ERP Sync</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-code-branch text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Custom API Middleware</span>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="solution-card p-12 rounded-sm flex flex-col">
                     <i class="fa-solid fa-brain text-3xl mb-10 text-orange-500"></i>
                     <h4 class="text-2xl font-bold mb-6">Knowledge Retrieval (RAG)</h4>
                     <p class="text-gray-500 text-sm mb-10 leading-relaxed">Deploying sophisticated AI agents trained on proprietary documentation to provide instant, accurate data retrieval.</p>
-                    <div class="mt-auto space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-database text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Vector DB Integration</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-magnifying-glass-chart text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Semantic Search Systems</span>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="solution-card p-12 rounded-sm flex flex-col">
                     <i class="fa-solid fa-shield-halved text-3xl mb-10 text-orange-500"></i>
                     <h4 class="text-2xl font-bold mb-6">Autonomous Logic</h4>
                     <p class="text-gray-500 text-sm mb-10 leading-relaxed">Building self-correcting agentic loops that handle complex multi-step tasks without constant human oversight.</p>
-                    <div class="mt-auto space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-eye-slash text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Self-Healing Workflows</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fa-solid fa-clipboard-check text-orange-500 text-[10px]"></i>
-                            <span class="text-[10px] tracking-widest text-gray-300 uppercase font-bold">Agentic Orchestration</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -336,23 +396,20 @@
                     <h3 class="text-4xl md:text-6xl font-extrabold">Case Studies & ROI</h3>
                 </div>
                 <div class="flex gap-4">
-                    <button onclick="changeProject(-1)" aria-label="Previous Case Study" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-left"></i></button>
-                    <button onclick="changeProject(1)" aria-label="Next Case Study" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition"><i class="fas fa-arrow-right"></i></button>
+                    <button onclick="changeProject(-1)" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 transition"><i class="fas fa-arrow-left"></i></button>
+                    <button onclick="changeProject(1)" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 transition"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <div id="main-stage" class="transition-opacity duration-500">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="bg-charcoal border border-white/10 overflow-hidden rounded-sm aspect-video flex items-center justify-center">
-                        <img id="stage-img" src="https://images.unsplash.com/photo-1551288049-bbda4865cda1?auto=format&fit=crop&q=80&w=1000" alt="Project Case Study" class="w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-[1.02] transition duration-500">
+                        <img id="stage-img" src="https://images.unsplash.com/photo-1551288049-bbda4865cda1?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale">
                     </div>
                     <div class="space-y-8">
                         <div id="stage-badge" class="inline-block px-3 py-1 bg-orange-500 text-black text-[9px] font-bold uppercase tracking-widest">Sector: Real Estate</div>
                         <h3 id="stage-title" class="text-4xl font-extrabold">Project Title</h3>
                         <div id="stage-desc" class="text-gray-400 font-light text-lg leading-relaxed space-y-4"></div>
-                        <div class="flex gap-4">
-                            <a href="#roadmap" class="accent-btn px-8 py-4 rounded-sm text-[10px] uppercase">Book Strategic Roadmap</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -366,14 +423,10 @@
                 <div class="text-center mb-16">
                     <h2 class="text-[10px] tracking-[0.5em] text-orange-500 font-bold uppercase mb-4">Consultation</h2>
                     <h3 class="text-4xl md:text-6xl font-extrabold mb-6">Strategic AI Roadmap</h3>
-                    <p class="text-gray-400 max-w-xl mx-auto font-light">Schedule a high-level architectural review to identify automation bottlenecks and feasibility. We build in weeks, not quarters.</p>
+                    <p class="text-gray-400 max-w-xl mx-auto font-light">Schedule a high-level architectural review to identify automation bottlenecks and feasibility.</p>
                 </div>
-                
                 <div class="calendar-container shadow-2xl">
                     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3oGM-0tbm66H3VkHYtGwnMQLnHj7vcSUxkXsdW0pllSAg2iLXX8HZcGfI9BGmxKeAg4LYvcf8B?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-                </div>
-                <div class="mt-8 text-center">
-                    <p class="text-gray-500 text-xs">Calendar not loading? <a href="mailto:gdulnuan.systems@gmail.com" class="text-orange-500 underline">Email us directly</a> to book your session.</p>
                 </div>
             </div>
         </div>
@@ -381,71 +434,53 @@
 
     <!-- FOOTER -->
     <footer class="py-24 bg-black border-t border-white/5">
-        <div class="container mx-auto px-6 md:px-16">
-            <div class="grid md:grid-cols-3 gap-12 items-start text-left mb-16">
-                <div>
-                    <div class="logo-chip w-fit mb-6">
-                        <i class="fa-solid fa-microchip text-orange-500 text-sm"></i>
-                        <span class="logo-text">GDA-SYSTEMS</span>
-                    </div>
-                    <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
-                        Engineering autonomous logic and secure AI architecture for the modern enterprise.
-                    </p>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Contact</h4>
-                    <a href="mailto:gdulnuan.systems@gmail.com" class="text-gray-500 hover:text-orange-500 transition text-sm">gdulnuan.systems@gmail.com</a>
-                    <a href="https://wa.me/77717628539" target="_blank" rel="noopener" class="text-gray-500 hover:text-orange-500 transition text-sm">+7 771 762 8539</a>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Social</h4>
-                    <a href="https://www.linkedin.com/in/gil-dulnuan/" target="_blank" rel="noopener" class="text-gray-500 hover:text-orange-500 transition text-sm flex items-center gap-2">
-                        <i class="fab fa-linkedin"></i> LinkedIn Profile
-                    </a>
-                </div>
-            </div>
-            
-            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2026 GDA Systems. Architecture for the Autonomous Age.</p>
-                <div class="flex gap-6 opacity-30 grayscale text-sm">
-                    <i class="fab fa-python" aria-hidden="true"></i>
-                    <i class="fas fa-database" aria-hidden="true"></i>
-                    <i class="fas fa-network-wired" aria-hidden="true"></i>
-                    <i class="fab fa-aws" aria-hidden="true"></i>
-                </div>
-            </div>
+        <div class="container mx-auto px-6 md:px-16 text-center">
+            <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2026 GDA Systems. Architecture for the Autonomous Age.</p>
         </div>
     </footer>
 
+    <!-- CHAT WIDGET BUTTON -->
+    <button id="chat-widget-button">💬</button>
+
+    <!-- CHAT WIDGET CONTAINER -->
+    <div id="chat-widget-container">
+        <div id="chat-widget-header">
+            <span>Try my LIVE BOT AI DEMO</span>
+            <button onclick="closeChatWidget()">✖</button>
+        </div>
+        <div id="chat-widget-body">
+            <p style="margin-bottom: 10px; background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid rgba(255,255,255,0.1);">
+                <strong>Hi 👋, how can we help?</strong> Ask me about GDA Systems services or case studies.
+            </p>
+        </div>
+        <div id="chat-widget-footer">
+            <input type="text" id="chat-widget-input" placeholder="Type your message here...">
+            <button id="chat-widget-send">Send</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
     <script>
+        /* --- CASE STUDIES SLIDER --- */
         const projects = [
             { 
                 img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000', 
                 sector: 'Real Estate / Asset Management',
                 title: 'High-Velocity Document Intelligence', 
-                desc: '<p><strong>Business Impact:</strong> Automated 1,200+ property document extractions per month, reducing manual verification time from 4 days to 4 minutes.</p><p><strong>The Solution:</strong> A production-grade n8n + Supabase pipeline utilizing GPT-4o for structured data extraction and automated archival.</p>' 
+                desc: '<p>Automated 1,200+ property document extractions per month, reducing manual verification time from 4 days to 4 minutes.</p>' 
             },
             { 
                 img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000', 
                 sector: 'FinTech / Operations',
                 title: 'Automated Financial Reconciliation', 
-                desc: '<p><strong>Business Impact:</strong> Achieved 100% data integrity across global platforms and reclaimed 40+ man-hours per week.</p><p><strong>The Solution:</strong> Custom API orchestration between Xero, Asana, and internal ERP systems via Make.com middleware with automated error-handling loops.</p>' 
-            },
-            { 
-                img: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&q=80&w=1000', 
-                sector: 'Logistics / Supply Chain',
-                title: 'Global Logistics Intent Engine', 
-                desc: '<p><strong>Business Impact:</strong> 90% reduction in manual document classification costs and sub-second archival speed for international bills of lading.</p><p><strong>The Solution:</strong> Google Gemini 1.5 Pro-powered intent analysis pipeline integrated with Pinecone vector storage for semantic retrieval.</p>' 
+                desc: '<p>Achieved 100% data integrity across global platforms and reclaimed 40+ man-hours per week.</p>' 
             }
         ];
-
         let currentIdx = 0;
-
         function changeProject(dir) {
             currentIdx = (currentIdx + dir + projects.length) % projects.length;
             updateStage(currentIdx);
         }
-
         function updateStage(index) {
             const stage = document.getElementById('main-stage');
             stage.style.opacity = '0';
@@ -457,8 +492,78 @@
                 stage.style.opacity = '1';
             }, 300);
         }
-
         document.addEventListener('DOMContentLoaded', () => updateStage(0));
+
+        /* --- CHAT WIDGET LOGIC --- */
+        const WEBHOOK_URL = 'https://gdasystems01.app.n8n.cloud/webhook/gda_systems';
+
+        function getChatId() {
+            let chatId = sessionStorage.getItem("chatId");
+            if (!chatId) {
+                chatId = "chat_" + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem("chatId", chatId);
+            }
+            return chatId;
+        }
+
+        document.getElementById("chat-widget-button").addEventListener("click", () => {
+            document.getElementById("chat-widget-container").style.display = "flex";
+            document.getElementById("chat-widget-button").style.display = "none";
+        });
+
+        function closeChatWidget() {
+            document.getElementById("chat-widget-container").style.display = "none";
+            document.getElementById("chat-widget-button").style.display = "flex";
+        }
+
+        document.getElementById("chat-widget-send").addEventListener("click", async () => {
+            const input = document.getElementById("chat-widget-input");
+            const message = input.value.trim();
+            if (!message) return;
+
+            const chatBody = document.getElementById("chat-widget-body");
+            
+            // Add User Message
+            const userMsg = document.createElement("p");
+            userMsg.textContent = message;
+            userMsg.style.alignSelf = "flex-end";
+            userMsg.style.background = "rgba(255,255,255,0.1)";
+            userMsg.style.color = "#fff";
+            chatBody.appendChild(userMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+            input.value = "";
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ chatId: getChatId(), message: message })
+                });
+                
+                const data = await response.json();
+                
+                // Add Bot Message
+                const botMsg = document.createElement("p");
+                // Check for 'output' or 'text' keys from n8n
+                botMsg.innerHTML = data.output || data.text || "I'm sorry, I couldn't process that. Please try again.";
+                botMsg.style.alignSelf = "flex-start";
+                botMsg.style.background = "#ff5c00";
+                botMsg.style.color = "#fff";
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+            } catch (error) {
+                console.error("Error:", error);
+                const errorMsg = document.createElement("p");
+                errorMsg.textContent = "Connection error. Ensure workflow is Published.";
+                errorMsg.style.color = "#ff4444";
+                chatBody.appendChild(errorMsg);
+            }
+        });
+
+        document.getElementById("chat-widget-input").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") document.getElementById("chat-widget-send").click();
+        });
     </script>
 </body>
 </html>
