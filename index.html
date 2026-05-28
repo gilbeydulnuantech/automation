@@ -69,27 +69,7 @@
             transform: translateY(-2px);
         }
 
-        .marquee-container {
-            background: #ffffff;
-            color: #000000;
-            padding: 18px 0;
-            transform: rotate(-1.5deg) scale(1.05);
-            margin: 60px 0;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 2px;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            z-index: 20;
-            position: relative;
-        }
-
-        .marquee-content {
-            display: flex;
-            animation: scroll 30s linear infinite;
-        }
+    
 
         @keyframes scroll {
             from { transform: translateX(0); }
@@ -238,6 +218,42 @@
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1.0); }
         }
+
+        /* Tech Stack Marquee Styling */
+        .tech-marquee-container {
+            overflow: hidden;
+            padding: 40px 0;
+            background: #000;
+            position: relative;
+            display: flex;
+        }
+
+        .tech-marquee-content {
+            display: flex;
+            gap: 60px;
+            animation: tech-scroll 40s linear infinite;
+            white-space: nowrap;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            color: var(--accent);
+        }
+
+        @keyframes tech-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body>
@@ -258,7 +274,7 @@
                 <a href="#works" class="hover:text-white transition">Case Studies</a>
             </div>
             <a href="#roadmap" class="accent-btn px-6 py-2 rounded-sm text-[10px] uppercase">
-                Book Roadmap Session
+                Book for Automation Audit
             </a>
         </div>
     </nav>
@@ -276,7 +292,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
                     <a href="#roadmap" class="accent-btn px-10 py-5 rounded-sm text-sm uppercase">
-                        Book Strategic Roadmap
+                        Book for Automation Audit
                     </a>
                     <a href="#works" class="flex items-center gap-4 text-white hover:text-orange-500 transition tracking-widest text-xs font-bold uppercase">
                         View ROI Case Studies <i class="fas fa-arrow-right text-orange-500"></i>
@@ -286,20 +302,63 @@
         </div>
     </section>
 
-    <!-- TECH STACK SECTION -->
-    <div class="bg-black border-y border-white/5">
-        <div class="container mx-auto px-6 md:px-16 py-12">
-            <p class="text-[9px] tracking-[0.3em] text-center text-gray-500 uppercase mb-8 font-bold">Engineered with Industry Standards</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
-                <div class="flex items-center gap-3"><i class="fab fa-python text-2xl"></i> <span class="font-bold text-xs tracking-tighter">Python</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-database text-2xl"></i> <span class="font-bold text-xs tracking-tighter">Pinecone</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-network-wired text-2xl"></i> <span class="font-bold text-xs tracking-tighter">LangChain</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-gears text-2xl"></i> <span class="font-bold text-xs tracking-tighter">n8n / Make</span></div>
-                <div class="flex items-center gap-3"><i class="fab fa-aws text-2xl"></i> <span class="font-bold text-xs tracking-tighter">AWS</span></div>
-                <div class="flex items-center gap-3"><i class="fa-solid fa-microchip text-2xl"></i> <span class="font-bold text-xs tracking-tighter">OpenAI / Anthropic</span></div>
-            </div>
+  <!-- TECH STACK SECTION -->
+<div class="bg-black border-y border-white/5">
+    <div class="container mx-auto px-6 md:px-16 pt-12">
+        <p class="text-[9px] tracking-[0.3em] text-center text-gray-500 uppercase mb-4 font-bold">Engineered with Industry Standards</p>
+    </div>
+    
+    <div class="tech-marquee-container">
+        <!-- Duplicated content for infinite loop -->
+        <div class="tech-marquee-content">
+            <!-- Set 1 -->
+            <div class="tech-item"><i class="fab fa-js text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">JavaScript</span></div>
+            <div class="tech-item"><i class="fa-solid fa-database text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Pinecone</span></div>
+            <div class="tech-item"><i class="fa-solid fa-link text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">LangChain</span></div>
+            <div class="tech-item"><i class="fa-solid fa-gears text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">n8n / Make</span></div>
+            <div class="tech-item"><i class="fab fa-aws text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">AWS</span></div>
+            <div class="tech-item"><i class="fa-solid fa-brain text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">OpenAI / Anthropic</span></div>
+            <div class="tech-item"><i class="fab fa-hubspot text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">HubSpot</span></div>
+            <div class="tech-item"><i class="fab fa-slack text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Slack</span></div>
+            <div class="tech-item"><i class="fa-solid fa-table-list text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Airtable</span></div>
+            <div class="tech-item"><i class="fa-solid fa-rocket text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Apollo.io</span></div>
+            <div class="tech-item"><i class="fa-solid fa-bolt text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Supabase</span></div>
+            <div class="tech-item"><i class="fab fa-salesforce text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Salesforce</span></div>
+            <div class="tech-item"><i class="fa-solid fa-briefcase text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Zoho CRM</span></div>
+            <div class="tech-item"><i class="fa-solid fa-plug text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Webhook</span></div>
+            <div class="tech-item"><i class="fa-solid fa-circle-nodes text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Asana</span></div>
+            <div class="tech-item"><i class="fab fa-trello text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Trello</span></div>
+            <div class="tech-item"><i class="fab fa-telegram text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Telegram</span></div>
+            <div class="tech-item"><i class="fa-solid fa-phone-volume text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Vapi</span></div>
+            <div class="tech-item"><i class="fa-solid fa-chart-pie text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">GoHighLevel</span></div>
+            <div class="tech-item"><i class="fa-solid fa-note-sticky text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Notion</span></div>
+
+            <!-- Set 2 (Exact Copy for seamless loop) -->
+            <div class="tech-item"><i class="fab fa-js text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">JavaScript</span></div>
+            <div class="tech-item"><i class="fa-solid fa-database text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Pinecone</span></div>
+            <div class="tech-item"><i class="fa-solid fa-link text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">LangChain</span></div>
+            <div class="tech-item"><i class="fa-solid fa-gears text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">n8n / Make</span></div>
+            <div class="tech-item"><i class="fab fa-aws text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">AWS</span></div>
+            <div class="tech-item"><i class="fa-solid fa-brain text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">OpenAI / Anthropic</span></div>
+            <div class="tech-item"><i class="fab fa-hubspot text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">HubSpot</span></div>
+            <div class="tech-item"><i class="fab fa-slack text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Slack</span></div>
+            <div class="tech-item"><i class="fa-solid fa-table-list text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Airtable</span></div>
+            <div class="tech-item"><i class="fa-solid fa-rocket text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Apollo.io</span></div>
+            <div class="tech-item"><i class="fa-solid fa-bolt text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Supabase</span></div>
+            <div class="tech-item"><i class="fab fa-salesforce text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Salesforce</span></div>
+            <div class="tech-item"><i class="fa-solid fa-briefcase text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Zoho CRM</span></div>
+            <div class="tech-item"><i class="fa-solid fa-plug text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Webhook</span></div>
+            <div class="tech-item"><i class="fa-solid fa-circle-nodes text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Asana</span></div>
+            <div class="tech-item"><i class="fab fa-trello text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Trello</span></div>
+            <div class="tech-item"><i class="fab fa-telegram text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Telegram</span></div>
+            <div class="tech-item"><i class="fa-solid fa-phone-volume text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Vapi</span></div>
+            <div class="tech-item"><i class="fa-solid fa-chart-pie text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">GoHighLevel</span></div>
+            <div class="tech-item"><i class="fa-solid fa-note-sticky text-2xl"></i> <span class="font-bold text-xs tracking-tighter uppercase">Notion</span></div>
         </div>
     </div>
+</div>
+
+    
 
     <!-- PROBLEM SECTION -->
     <section class="py-24 bg-[#050505]">
@@ -370,14 +429,6 @@
             </div>
         </div>
     </section>
-
-    <!-- SLANTED MARQUEE -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
-            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
-        </div>
-    </div>
 
     <!-- SOLUTIONS SECTION -->
     <section id="solutions" class="py-32 bg-black border-b border-white/5">
