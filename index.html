@@ -118,22 +118,24 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 65px;
-            height: 65px;
+            height: 60px;
+            padding: 0 25px;
             background-color: var(--accent);
             color: white;
-            border-radius: 50%;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            gap: 12px;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(255, 92, 0, 0.4);
             z-index: 1000;
             border: none;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        #chat-widget-button:hover { transform: scale(1.1) rotate(5deg); }
+        #chat-widget-button:hover { transform: scale(1.05); }
+        #chat-widget-button i { font-size: 22px; }
+        #chat-widget-button span { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; }
 
         #chat-widget-container {
             position: fixed;
@@ -169,8 +171,6 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.02) 1px, transparent 0);
-            background-size: 24px 24px;
         }
         #chat-widget-body p {
             padding: 12px 16px;
@@ -179,6 +179,7 @@
             line-height: 1.6;
             max-width: 85%;
             word-wrap: break-word;
+            white-space: pre-wrap; /* This forces the browser to show line breaks */
         }
 
         #chat-widget-footer {
@@ -198,7 +199,6 @@
             border-radius: 6px;
             outline: none;
         }
-        #chat-widget-input:focus { border-color: var(--accent); }
         #chat-widget-send {
             background-color: var(--accent);
             color: white;
@@ -209,13 +209,35 @@
             font-size: 10px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: opacity 0.2s;
         }
-        #chat-widget-send:hover { opacity: 0.9; }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+        /* --- BOUNCING DOTS CSS --- */
+        .typing-indicator {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 12px;
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
     </style>
 </head>
 <body>
@@ -279,7 +301,7 @@
         </div>
     </div>
 
-    <!-- PAIN POINT SECTION -->
+    <!-- PROBLEM SECTION -->
     <section class="py-24 bg-[#050505]">
         <div class="container mx-auto px-6 md:px-16">
             <div class="max-w-4xl">
@@ -288,7 +310,6 @@
                     Most enterprises are running on <br>
                     <span class="text-orange-500 italic">"Manual Middleware."</span>
                 </h3>
-                
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="border-l border-orange-500/30 pl-8">
                         <p class="text-white font-bold mb-2">Siloed Intelligence</p>
@@ -345,20 +366,18 @@
                         <span class="text-2xl font-bold block mb-1">SOC2</span>
                         <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Framework Alignment</span>
                     </div>
-                    <div class="gov-card p-10 text-center">
-                        <i class="fa-solid fa-list-check text-orange-500 text-2xl mb-4"></i>
-                        <span class="text-2xl font-bold block mb-1">Audit</span>
-                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Full Decision Logging</span>
-                    </div>
-                    <div class="gov-card p-10 text-center">
-                        <i class="fa-solid fa-scale-balanced text-orange-500 text-2xl mb-4"></i>
-                        <span class="text-2xl font-bold block mb-1">GDPR</span>
-                        <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Privacy Compliant</span>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- SLANTED MARQUEE -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
+            <span>Workflow Orchestration <span class="dot-sep">•</span> AI Strategy <span class="dot-sep">•</span> Autonomous Logic <span class="dot-sep">•</span> RAG Architecture <span class="dot-sep">•</span> Process Engineering <span class="dot-sep">•</span> </span>
+        </div>
+    </div>
 
     <!-- SOLUTIONS SECTION -->
     <section id="solutions" class="py-32 bg-black border-b border-white/5">
@@ -400,7 +419,6 @@
                     <button onclick="changeProject(1)" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-orange-500 transition"><i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-
             <div id="main-stage" class="transition-opacity duration-500">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="bg-charcoal border border-white/10 overflow-hidden rounded-sm aspect-video flex items-center justify-center">
@@ -434,18 +452,51 @@
 
     <!-- FOOTER -->
     <footer class="py-24 bg-black border-t border-white/5">
-        <div class="container mx-auto px-6 md:px-16 text-center">
-            <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2026 GDA Systems. Architecture for the Autonomous Age.</p>
+        <div class="container mx-auto px-6 md:px-16">
+            <div class="grid md:grid-cols-3 gap-12 items-start text-left mb-16">
+                <div>
+                    <div class="logo-chip w-fit mb-6">
+                        <i class="fa-solid fa-microchip text-orange-500 text-sm"></i>
+                        <span class="logo-text">GDA-SYSTEMS</span>
+                    </div>
+                    <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
+                        Engineering autonomous logic and secure AI architecture for the modern enterprise.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Contact</h4>
+                    <a href="mailto:gdulnuan.systems@gmail.com" class="text-gray-500 hover:text-orange-500 transition text-sm">gdulnuan.systems@gmail.com</a>
+                    <a href="https://wa.me/77717628539" target="_blank" class="text-gray-500 hover:text-orange-500 transition text-sm">+7 771 762 8539</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-white">Social</h4>
+                    <a href="https://www.linkedin.com/in/gil-dulnuan/" target="_blank" class="text-gray-500 hover:text-orange-500 transition text-sm flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© 2026 GDA Systems. Architecture for the Autonomous Age.</p>
+                <div class="flex gap-6 opacity-30 grayscale text-sm">
+                    <i class="fab fa-python"></i>
+                    <i class="fas fa-database"></i>
+                    <i class="fas fa-network-wired"></i>
+                    <i class="fab fa-aws"></i>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- CHAT WIDGET BUTTON -->
-    <button id="chat-widget-button">💬</button>
+    <button id="chat-widget-button">
+        <i class="fa-solid fa-robot"></i>
+        <span>TRY THE RAG DEMO IN LIVE</span>
+    </button>
 
     <!-- CHAT WIDGET CONTAINER -->
     <div id="chat-widget-container">
         <div id="chat-widget-header">
-            <span>Try my LIVE BOT AI DEMO</span>
+            <span>GDA Systems RAG DEMO</span>
             <button onclick="closeChatWidget()">✖</button>
         </div>
         <div id="chat-widget-body">
@@ -523,15 +574,24 @@
 
             const chatBody = document.getElementById("chat-widget-body");
             
-            // Add User Message
+            // 1. Add User Message
             const userMsg = document.createElement("p");
             userMsg.textContent = message;
             userMsg.style.alignSelf = "flex-end";
             userMsg.style.background = "rgba(255,255,255,0.1)";
             userMsg.style.color = "#fff";
             chatBody.appendChild(userMsg);
-            chatBody.scrollTop = chatBody.scrollHeight;
+            
             input.value = "";
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // 2. Add Typing Indicator (Bouncing Dots)
+            const typingIndicator = document.createElement("div");
+            typingIndicator.id = "typing-indicator";
+            typingIndicator.className = "typing-indicator";
+            typingIndicator.innerHTML = "<span></span><span></span><span></span>";
+            chatBody.appendChild(typingIndicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
 
             try {
                 const response = await fetch(WEBHOOK_URL, {
@@ -541,11 +601,16 @@
                 });
                 
                 const data = await response.json();
+
+                // 3. Remove Typing Indicator
+                const indicator = document.getElementById("typing-indicator");
+                if (indicator) indicator.remove();
                 
-                // Add Bot Message
+                // 4. Add Bot Message
                 const botMsg = document.createElement("p");
-                // Check for 'output' or 'text' keys from n8n
-                botMsg.innerHTML = data.output || data.text || "I'm sorry, I couldn't process that. Please try again.";
+                let rawContent = data.output || data.text || "I cant find the answer based on my knowledge.";
+                botMsg.innerHTML = rawContent.replace(/\n/g, '<br>'); 
+                
                 botMsg.style.alignSelf = "flex-start";
                 botMsg.style.background = "#ff5c00";
                 botMsg.style.color = "#fff";
@@ -553,6 +618,10 @@
                 chatBody.scrollTop = chatBody.scrollHeight;
 
             } catch (error) {
+                // Remove indicator on error
+                const indicator = document.getElementById("typing-indicator");
+                if (indicator) indicator.remove();
+
                 console.error("Error:", error);
                 const errorMsg = document.createElement("p");
                 errorMsg.textContent = "Connection error. Ensure workflow is Published.";
